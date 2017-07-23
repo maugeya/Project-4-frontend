@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<form ui-sref="login" ng-submit="login.submit()" novalidate>
+<form name="login.loginForm" ui-sref="login" ng-submit="login.submit()">
   <div class="form group">
     <label for="email">Email</label>
-    <input type="text" name="email" placeholder="email">
+    <input type="text" name="email" placeholder="email" ng-model="login.user.email" required>
   </div>
   <div class="form group">
     <label for="password">Password</label>
-      <input type="text" name="password" placeholder="password">
+      <input type="password" name="password" placeholder="password" ng-model="login.user.password" required>
   </div>
   <div class="form group">
   <button name="submit">Submit</button>

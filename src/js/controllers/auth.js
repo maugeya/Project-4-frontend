@@ -1,7 +1,7 @@
 angular
-  .module('spotlightApp')
-  .controller('RegisterCtrl', RegisterCtrl)
-  .controller('LoginCtrl', LoginCtrl);
+.module('spotlightApp')
+.controller('RegisterCtrl', RegisterCtrl)
+.controller('LoginCtrl', LoginCtrl);
 
 RegisterCtrl.$inject = ['$auth', '$state', '$rootScope'];
 function RegisterCtrl($auth, $state, $rootScope) {
@@ -11,11 +11,11 @@ function RegisterCtrl($auth, $state, $rootScope) {
   function submit() {
     if (vm.registerForm.$valid) {
       $auth.signup(vm.user)
-        .then((res) => {
-          $rootScope.$broadcast('message', res.data.message);
-          $state.go('login');
-        })
-        .catch(() => $state.go('register'));
+      .then((res) => {
+        $rootScope.$broadcast('message', res.data.message);
+        $state.go('login');
+      })
+      .catch(() => $state.go('register'));  
     }
   }
 
@@ -30,14 +30,14 @@ function LoginCtrl($auth, $state, $rootScope ) {
   function submit() {
     if (vm.loginForm.$valid) {
       $auth.login(vm.credentials)
-        .then((res) => {
-          $rootScope.$broadcast('message', res.data.message);
-          $state.go('postsIndex');
-        })
-        .catch(() => $state.go('login'));
+      .then((res) => {
+        $rootScope.$broadcast('message', res.data.message);
+        $state.go('postsIndex');
+      })
+      .catch(() => $state.go('login'));
+
     }
   }
-
   vm.submit = submit;
 
 }

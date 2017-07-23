@@ -1,1 +1,22 @@
-<h1>register</h1>
+<!DOCTYPE html>
+  <form  name="register.registerForm" ng-submit="register.submit()">
+    <div class="form group">
+      <label for="username">Username</label>
+      <input type="text" name="username" placeholder="username" ng-model="register.user.username" required>
+    </div>
+    <div class="form group">
+      <label for="email">Email</label>
+      <input type="text" name="email" placeholder="email" ng-model="register.user.email" required>
+    </div>
+    <div class="form group">
+      <label for="password">Password</label>
+        <input type="password" name="password" placeholder="password" ng-model="register.user.password" required>
+    </div>
+    <div class="form group">
+      <label for="passwordConfimation">Password Confirmation</label>
+        <input type="password" name="passwordConfimation" placeholder="passwordConfimation" ng-model="register.user.passwordConfirmation" required>
+    </div>
+    <div class="form group">
+    <button class="button" name="submit">Submit</button>
+    </div>
+  </form>
