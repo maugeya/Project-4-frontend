@@ -11,5 +11,5 @@ function MainCtrl($http, API_URL) {
     url: `${API_URL}/users`
   })
   .then((res) => vm.users = res.data);
-  
+
 }
