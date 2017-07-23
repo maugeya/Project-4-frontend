@@ -15,7 +15,7 @@ function RegisterCtrl($auth, $state, $rootScope) {
         $rootScope.$broadcast('message', res.data.message);
         $state.go('login');
       })
-      .catch(() => $state.go('register'));  
+      .catch(() => $state.go('register'));
     }
   }
 
