@@ -1,5 +1,5 @@
 angular
-  .module('finalProject')
+  .module('spotlightApp')
   .controller('RegisterCtrl', RegisterCtrl)
   .controller('LoginCtrl', LoginCtrl);
 
