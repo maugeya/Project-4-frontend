@@ -22,6 +22,6 @@
     "bulma": "^0.4.3"
   },
   "resolutions": {
-    "angular": ">= 1.2.0"
+    "angular": "1.6.5"
   }
 }

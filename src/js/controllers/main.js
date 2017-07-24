@@ -1,5 +1,5 @@
 angular
-  .module('spolightApp')
+  .module('spotlightApp')
   .controller('MainCtrl', MainCtrl);
 
 MainCtrl.$inject = ['$rootScope', '$state' , '$auth'];

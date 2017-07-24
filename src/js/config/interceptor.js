@@ -1,5 +1,5 @@
 angular
-  .module('spolightApp')
+  .module('spotlightApp')
   .config(Interceptors);
 
 Interceptors.$inject = ['$httpProvider'];
