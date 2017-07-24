@@ -3,10 +3,11 @@ angular
 .controller('RegisterCtrl', RegisterCtrl)
 .controller('LoginCtrl', LoginCtrl);
 
-RegisterCtrl.$inject = ['$auth', '$state', '$rootScope'];
-function RegisterCtrl($auth, $state, $rootScope) {
+RegisterCtrl.$inject = ['$auth', '$state', '$rootScope', 'Topic'];
+function RegisterCtrl($auth, $state, $rootScope, Topic) {
   const vm = this;
   vm.user = {};
+  vm.topic = Topic.query();
 
   function submit() {
     console.log(vm.user);
