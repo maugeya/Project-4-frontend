@@ -1,1 +1,21 @@
+<!DOCTYPE html>
 <h1>Post Edit</h1>
+
+{{ postsEdit.post.image }}
+<form name="postsEdit.newForm" ng-submit="postsEdit.update()">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" ng-model="postsEdit.post.title" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="body">Post Content</label>
+    <input type="text" name="body" id="body" ng-model="postsEdit.post.body" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="base64">Image</label>
+    <input type="file" base64 name="base64" class="base64" ng-model="postsEdit.post.base64">
+  </div>
+  <img ng-src="{{postsEdit.post.base64}}" alt="">
+
+  <button class="btn btn-primary">Update</button>
+</form>

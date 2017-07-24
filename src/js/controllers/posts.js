@@ -80,7 +80,6 @@ function PostsEditCtrl(Post, User, $stateParams, $state) {
 
   Post.get($stateParams).$promise.then((post) => {
     vm.post = post;
-    vm.post.date = new Date(post.date);
   });
 
   vm.users = User.query();
