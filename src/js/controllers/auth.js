@@ -40,6 +40,12 @@ function LoginCtrl($auth, $state, $rootScope ) {
 
     }
   }
+
+  function authenticate(provider) {
+    $auth.authenticate(provider)
+      .then(() => $state.go('postsIndex'));
+  }
   vm.submit = submit;
+  vm.authenticate = authenticate;
 
 }
