@@ -1,1 +1,20 @@
 <h1>New Post</h1>
+
+{{ postsNew.post.image }}
+<form name="postsNew.newForm" ng-submit="postsNew.create()">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" ng-model="postsNew.post.title" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="body">Post Content</label>
+    <input type="text" name="body" id="body" ng-model="postsNew.post.body" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="base64">Image</label>
+    <input type="file" base64 name="base64" id="base64" ng-model="postsNew.post.base64">
+  </div>
+  <img ng-src="{{postsNew.post.base64}}" alt="">
+
+  <button class="btn btn-primary">Update</button>
+</form>
