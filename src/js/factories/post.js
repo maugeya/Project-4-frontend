@@ -1,5 +1,5 @@
 angular
-  .module('spotlightApp')
+  .module('spolightApp')
   .factory('Post', Post);
 
 Post.$inject = ['$resource', 'API_URL'];
