@@ -1,2 +1,17 @@
 // Import all of your scss files here
-@import "./bower_components/bulma/bulma.sass"
+@import "./bower_components/bulma/bulma.sass";
+
+
+.maintitle {
+  text-align: center;
+  margin-top: 18%;
+  font-size: 50px;
+}
+
+form {
+  margin-top: 20%;
+}
+
+button {
+  margin: 10px 0 10px 0;
+}

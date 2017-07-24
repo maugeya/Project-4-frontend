@@ -1,22 +1,74 @@
 <!DOCTYPE html>
-  <form  name="register.registerForm" ng-submit="register.submit()">
-    <div class="form group">
-      <label for="username">Username</label>
-      <input type="text" name="username" placeholder="username" ng-model="register.user.username" required>
+
+<div class="column is-half is-offset-one-quarter">
+  <form name="register.registerForm" ng-submit="register.submit()" novalidate>
+
+    <div class="field">
+      <p class="control has-icons-left">
+        <input class="input" type="text" placeholder="Username" name="username" id="username" ng-model="register.user.username" maxlength="20" required>
+        <span class="icon is-medium is-left">
+          <i class="fa fa-user-circle-o"></i>
+        </span>
+      </p>
+      <div class="ng-message-error" ng-messages="register.registerForm.username.$error" ng-show="(register.registerForm.$submitted || register.registerForm.username.$touched)">
+        <p ng-message="required">A username is required</p>
+      </div>
     </div>
-    <div class="form group">
-      <label for="email">Email</label>
-      <input type="text" name="email" placeholder="email" ng-model="register.user.email" required>
+
+    <div class="field">
+      <p class="control has-icons-left">
+        <input class="input" type="text" placeholder="Email" name="email" id="email" ng-model="register.user.email" maxlength="30" required >
+        <span class="icon is-medium is-left">
+          <i class="fa fa-envelope"></i>
+        </span>
+      </p>
+      <div class="ng-message-error" ng-messages="register.registerForm.email.$error" ng-show="(register.registerForm.$submitted || register.registerForm.email.$touched)">
+        <p ng-message="required">An email is required</p>
+      </div>
     </div>
-    <div class="form group">
-      <label for="password">Password</label>
-        <input type="password" name="password" placeholder="password" ng-model="register.user.password" required>
+
+
+
+    <div class="field">
+      <p class="control has-icons-left">
+        <input class="input" type="password" placeholder="Password" name="password" id="password" ng-model="register.user.password" required>
+        <span class="icon is-medium is-left">
+          <i class="fa fa-lock"></i>
+        </span>
+      </p>
+      <div class="ng-message-error" ng-messages="register.registerForm.password.$error" ng-show="(register.registerForm.$submitted || register.registerForm.password.$touched)">
+        <p ng-message="required">A password is required</p>
+      </div>
     </div>
-    <div class="form group">
-      <label for="passwordConfimation">Password Confirmation</label>
-        <input type="password" name="passwordConfimation" placeholder="passwordConfimation" ng-model="register.user.passwordConfirmation" required>
+
+    <div class="field">
+      <p class="control has-icons-left">
+        <input class="input" type="password" placeholder="Password confirmation" name="passwordConfirmation" id="passwordConfirmation" ng-model="register.user.passwordConfirmation" required>
+        <span class="icon is-medium is-left">
+          <i class="fa fa-exclamation-triangle"></i>
+        </span>
+      </p>
+      <div class="ng-message-error" ng-messages="register.registerForm.passwordConfirmation.$error" ng-show="(register.registerForm.$submitted || register.registerForm.passwordConfirmation.$touched)">
+        <p ng-message="required">You must confirm your password</p>
+      </div>
     </div>
-    <div class="form group">
-    <button class="button" name="submit">Submit</button>
+
+    <div class="field">
+      <p class="control">
+        <input type="submit" class="button is-dark is-fullwidth" value="Register">
+      </p>
     </div>
   </form>
+  <hr>
+
+  <button class="button is-info is-fullwidth facebook" ng-click="login.authenticate('facebook')">
+    <span class="icon">
+      <i class="fa fa-facebook"></i>
+    </span>
+    <span>Register with Facebook</span>
+  </button>
+
+
+  <hr>
+
+</div>

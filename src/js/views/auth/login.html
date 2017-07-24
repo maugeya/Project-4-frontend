@@ -1,20 +1,38 @@
 <!DOCTYPE html>
-<form name="login.loginForm" ui-sref="login" ng-submit="login.submit()">
-  <div class="form group">
-    <label for="email">Email</label>
-    <input type="text" name="email" placeholder="email" ng-model="login.credentials.email" required>
+<div class="column is-4 is-offset-4">
+  <div class="field">
+    <form ng-submit="login.submit()" name="login.loginForm" novalidate>
+
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="text" placeholder="Email" id="email" name="email" ng-model="login.credentials.email">
+          <span class="icon is-medium is-left">
+            <i class="fa fa-envelope"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="password" placeholder="Password" id="password" name="password" ng-model="login.credentials.password">
+          <span class="icon is-medium is-left">
+            <i class="fa fa-lock"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="control"><input type="submit" class="button is-success is-fullwidth" value="Login"></p>
+      </div>
+
+    </form>
+
+    <button class="button is-info is-fullwidth facebook" ng-click="login.authenticate('facebook')">
+      <span class="icon">
+        <i class="fa fa-facebook"></i>
+      </span>
+      <span>Login with Facebook</span>
+    </button>
+
   </div>
-  <div class="form group">
-    <label for="password">Password</label>
-      <input type="password" name="password" placeholder="password" ng-model="login.credentials.password" required>
-  </div>
-  <div class="form group">
-  <button name="submit">Submit</button>
-  </div>
-  <button class="button is-info is-halfwidth facebook" ng-click="login.authenticate('facebook')">
-  <span class="icon">
-    <i class="fa fa-facebook"></i>
-  </span>
-  <span>Login with Facebook</span>
-</button>
-</form>
+</div>

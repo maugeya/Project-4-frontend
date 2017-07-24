@@ -10,31 +10,48 @@
   <!-- inject:css -->
   <!-- endinject -->
 </head>
-<body ng-controller="MainCtrl as main">
+<body ng-controller="MainCtrl as main" ng-class="main.pageName">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item">
-        <h1><strong>Spotlight</strong></h1>
+      <a class="navbar-item" ui-sref="home">
+        <strong>Spotlight</strong>
+        <span class="icon is-small is-right">
+          <i class="fa fa-lightbulb-o"></i>
+        </span>
       </a>
+      <div class="navbar-burger burger" data-target="navMenuExample" ng-click="menuIsOpen = !menuIsOpen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
-    <div class="navbar">
-      <a class="navbar-item" ui-sref="postsIndex">
-        Posts
-      </a>
-      <a class="navbar-item" ui-sref="postsNew">
-        New Post
-      </a>
-    </div>
-    <div class="navbar-end">
-      <a class="navbar-item" ui-sref="login">
-        Login
-      </a>
-      <a class="navbar-item" ui-sref="register">
-        Register
-      </a>
-      <a class="navbar-item" ng-click="main.logout()">
-        Logout
-      </a>
+
+    <div id="navMenuExample" class="navbar-menu" ng-class="{ 'is-active': menuIsOpen }">
+      <div class="navbar">
+        <a class="navbar-item" ui-sref="postsIndex">
+          Posts
+        </a>
+        <a class="navbar-item" ui-sref="postsNew">
+          New Post
+        </a>
+      </div>
+      <div class="navbar-end">
+        <a class="navbar-item" ui-sref="login" ng-if="!main.isAuthenticated()">
+          Login
+        </a>
+        <a class="navbar-item" ui-sref="register" ng-if="!main.isAuthenticated()">
+          Register
+        </a>
+        <a class="navbar-item" ui-sref="register" ng-if="main.isAuthenticated()">
+          <span class="icon is-medium is-right">
+            <i class="fa fa-bell-o"></i>
+          </span>
+        </a>
+        <a class="navbar-item" ng-if="main.isAuthenticated()" ng-click="main.logout()">
+          Logout
+        </a>
+
+      </div>
     </div>
   </nav>
   <main ui-view>

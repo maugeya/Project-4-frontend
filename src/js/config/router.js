@@ -7,8 +7,12 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $stateProvider
-  .state('postsIndex', {
+  .state('home', {
     url: '/',
+    templateUrl: 'js/views/static/home.html'
+  })
+  .state('postsIndex', {
+    url: '/posts',
     templateUrl: 'js/views/posts/index.html',
     controller: 'PostsIndexCtrl as postsIndex'
   })
