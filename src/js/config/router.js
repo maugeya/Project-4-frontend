@@ -1,5 +1,5 @@
 angular
-.module('spotlightApp')
+.module('spolightApp')
 .config(Router);
 
 Router.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];

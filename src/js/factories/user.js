@@ -1,5 +1,5 @@
 angular
-  .module('spotlightApp')
+  .module('spolightApp')
   .factory('User', User);
 
 User.$inject = ['$resource', 'API_URL'];

@@ -1,5 +1,5 @@
 angular
-  .module('spotlightApp')
+  .module('spolightApp')
   .factory('ErrorHandler', ErrorHandler);
 
 ErrorHandler.$inject = ['$rootScope'];

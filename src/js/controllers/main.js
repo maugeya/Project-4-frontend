@@ -1,5 +1,5 @@
 angular
-  .module('spotlightApp')
+  .module('spolightApp')
   .controller('MainCtrl', MainCtrl);
 
 MainCtrl.$inject = ['$http', 'API_URL'];

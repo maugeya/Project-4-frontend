@@ -1,5 +1,5 @@
 angular
-.module('spotlightApp')
+.module('spolightApp')
 .controller('PostsIndexCtrl', PostsIndexCtrl)
 .controller('PostsNewCtrl', PostsNewCtrl)
 .controller('PostsShowCtrl', PostsShowCtrl)
