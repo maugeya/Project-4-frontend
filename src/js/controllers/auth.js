@@ -9,9 +9,11 @@ function RegisterCtrl($auth, $state, $rootScope) {
   vm.user = {};
 
   function submit() {
+    console.log(vm.user);
     if (vm.registerForm.$valid) {
       $auth.signup(vm.user)
       .then((res) => {
+
         $rootScope.$broadcast('message', res.data.message);
         $state.go('login');
       })

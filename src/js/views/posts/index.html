@@ -1,1 +1,13 @@
-<h1>posts index</h1>
+<!DOCTYPE html>
+
+<h1 ng-if="main.isAuthenticated()">posts index</h1>
+<div ng-repeat="post in postsIndex.all">
+  <div class="card">
+    <h3><a ui-sref="postsShow({ id: post.id })">{{ post.title }}</a></h3>
+    <img src="{{ post.image}}">
+    <ul ng-repeat="topic in post.topics">
+      <li>{{ topic.name }}</li>
+    </ul>
+  </div>
+
+</div>

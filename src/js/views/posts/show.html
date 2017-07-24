@@ -1,1 +1,7 @@
-<h1>Post Show</h1>
+<!DOCTYPE html>
+<h1>{{ postsShow.post.title }}</h1>
+<ul ng-repeat="topic in postsShow.post.topics">
+  <li>{{ topic.name }}</li>
+</ul>
+<a ng-href="{{ postsShow.post.link_url }}" target="_blank">Article Link</a>
+<p>{{ postsShow.post.body }}</p>

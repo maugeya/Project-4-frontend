@@ -30,8 +30,9 @@ function PostsNewCtrl(Post, $state) {
   vm.create = postsCreate;
 }
 
-PostsShowCtrl.$inject = ['Post', '$stateParams', '$state', '$http', '$uibModal'];
-function PostsShowCtrl(Post, $stateParams, $state, $http, $uibModal) {
+PostsShowCtrl.$inject = ['Post', '$stateParams', '$state'];
+function PostsShowCtrl(Post, $stateParams) {
+  // $uibModal
   const vm = this;
 
   Post.get($stateParams)
@@ -78,7 +79,7 @@ function PostsDeleteCtrl($uibModalInstance, currentPost, $state) {
   const vm = this;
   vm.post = currentPost;
 
- 
+
 
 
   function postsDelete() {
