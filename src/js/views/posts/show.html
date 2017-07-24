@@ -1,7 +1,26 @@
 <!DOCTYPE html>
-<h1>{{ postsShow.post.title }}</h1>
-<ul ng-repeat="topic in postsShow.post.topics">
-  <li>{{ topic.name }}</li>
-</ul>
-<a ng-href="{{ postsShow.post.link_url }}" target="_blank">Article Link</a>
-<p>{{ postsShow.post.body }}</p>
+<div class="titleInfo">
+  <h1>{{ postsShow.post.title }}</h1>
+  <a ng-href="{{ postsShow.post.link_url }}" target="_blank">Article Link</a>
+</div>
+<div class="columns is-multiline">
+  <div class="column is-half">
+    <p>{{ postsShow.post.body }}</p>
+  </div>
+  <div class="column-is-half">
+    <img src="{{ postsShow.post.image }}" alt="">
+    <ul ng-repeat="topic in postsShow.post.topics">
+      <li>{{ topic.name }}</li>
+    </ul>
+  </div>
+</div>
+<div ng-repeat="comment in postsShow.post.comments" class="column is-half">
+  <h3>{{ comment.user.username }}</h3>
+  <p> {{ comment.body }}</p>
+  <button ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment(comment)">Delete</button>
+</div>
+<h1>Join the discussion!</h1>
+<form ng-submit="postsShow.addComment()">
+  <textarea type="text" name="body" ng-model="postsShow.comment.body"></textarea>
+  <button name="submit">Comment</button>
+</form>

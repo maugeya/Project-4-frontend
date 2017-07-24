@@ -3,8 +3,7 @@ angular
 .controller('PostsIndexCtrl', PostsIndexCtrl)
 .controller('PostsNewCtrl', PostsNewCtrl)
 .controller('PostsShowCtrl', PostsShowCtrl)
-.controller('PostsEditCtrl', PostsEditCtrl)
-.controller('PostsDeleteCtrl', PostsDeleteCtrl);
+.controller('PostsEditCtrl', PostsEditCtrl);
 
 
 PostsIndexCtrl.$inject = ['Post'];
@@ -30,69 +29,68 @@ function PostsNewCtrl(Post, $state) {
   vm.create = postsCreate;
 }
 
-PostsShowCtrl.$inject = ['Post', '$stateParams', '$state'];
-function PostsShowCtrl(Post, $stateParams) {
-  // $uibModal
+
+PostsShowCtrl.$inject = ['Post', 'User', 'Comment', '$stateParams', '$state', '$auth'];
+function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth) {
   const vm = this;
+  if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
-  Post.get($stateParams)
-  .$promise
-  .then((post) => {
-    vm.post = post;
-  });
-
-
-  // function openModal() {
-  //   $uibModal.open({
-  //     templateUrl: 'js/views/partials/postDeleteModal.html',
-  //     controller: 'PostsDeleteCtrl as postsDelete',
-  //     resolve: {
-  //       currentPost: () => {
-  //         return vm.post;
-  //       }
-  //     }
-  //   });
-  // }
-
-  // vm.openModal = openModal;
-
-}
-
-PostsEditCtrl.$inject = ['Post', '$stateParams', '$state'];
-function PostsEditCtrl(Post, $stateParams, $state) {
-
-  const vm = this;
-  vm.post.createdBy.id = vm.post.createdBy._id;
   vm.post = Post.get($stateParams);
-  vm.update = postsUpdate;
-
-  function postsUpdate() {
-
-    vm.post
-    .$update()
-    .then(() => $state.go('postsShow', $stateParams));
-  }
-}
-
-PostsDeleteCtrl.$inject = ['$uibModalInstance', 'currentPost', '$state'];
-function PostsDeleteCtrl($uibModalInstance, currentPost, $state) {
-  const vm = this;
-  vm.post = currentPost;
-
-
-
 
   function postsDelete() {
-
     vm.post
-    .$remove()
-    .then(() => {
-
-      $state.go( 'postsIndex' );
-
-      $uibModalInstance.close();
-    });
+      .$remove()
+      .then(() => $state.go('postsIndex'));
   }
 
   vm.delete = postsDelete;
+
+  function addComment() {
+    vm.comment.post_id = vm.post.id;
+    vm.comment.user_id = vm.currentUser_id;
+
+    Comment
+      .save(vm.comment)
+      .$promise
+      .then((comment) => {
+        console.log(comment);
+        vm.post.comments.push(comment);
+        vm.comment = {};
+      });
+  }
+
+  vm.addComment = addComment;
+
+  function deleteComment(comment) {
+    Comment
+      .delete({ id: comment.id })
+      .$promise
+      .then(() => {
+        const index = vm.post.comments.indexOf(comment);
+        vm.post.comments.splice(index, 1);
+      });
+  }
+
+  vm.deleteComment = deleteComment;
+}
+
+PostsEditCtrl.$inject = ['Post', 'User', '$stateParams', '$state'];
+function PostsEditCtrl(Post, User, $stateParams, $state) {
+  const vm = this;
+
+  Post.get($stateParams).$promise.then((post) => {
+    vm.post = post;
+    vm.post.date = new Date(post.date);
+  });
+
+  vm.users = User.query();
+
+  function postsUpdate() {
+    Post
+      .update({ id: vm.post.id }, vm.post)
+      .$promise
+      .then(() => $state.go('postsShow', { id: vm.post.id }));
+  }
+
+  vm.update = postsUpdate;
 }
