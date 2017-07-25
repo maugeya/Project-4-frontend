@@ -52,11 +52,14 @@
         <p ng-message="required">You must confirm your password</p>
       </div>
     </div>
-    <div ng-repeat="topic in register.topic">
-    <label class="checkbox"> {{ topic.name }}
-      <input type="checkbox" checklist-model="register.user.topics">
-    </label>
-  </div>
+
+    <div class="field">
+      <label for="topics">Topics</label>
+      <label ng-repeat="topic in register.topics">
+        <input type="checkbox" name="topics" checklist-model="register.user.topic_ids" checklist-value="topic.id" > {{ topic.name }}
+      </label>
+    </div>
+
     <div class="field">
       <p class="control">
         <input type="submit" class="button is-dark is-fullwidth" value="Register">
@@ -71,8 +74,4 @@
     </span>
     <span>Register with Facebook</span>
   </button>
-
-
-  <hr>
-
 </div>

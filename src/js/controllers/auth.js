@@ -7,7 +7,7 @@ RegisterCtrl.$inject = ['$auth', '$state', '$rootScope', 'Topic'];
 function RegisterCtrl($auth, $state, $rootScope, Topic) {
   const vm = this;
   vm.user = {};
-  vm.topic = Topic.query();
+  vm.topics = Topic.query();
 
   function submit() {
     console.log(vm.user);
