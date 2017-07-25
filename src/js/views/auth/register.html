@@ -53,14 +53,12 @@
       </div>
     </div>
 
-<<<<<<< HEAD
-=======
-    <div ng-repeat="topic in register.topic">
-    <label class="checkbox"> {{ topic.name }}
-      <input type="checkbox" checklist-model="register.user.topics">
-    </label>
-  </div>
->>>>>>> navbar
+    <div class="">
+      <label for="topics">Topics</label>
+      <label ng-repeat="topic in register.topics">
+        <input type="checkbox" name="topics" checklist-model="register.user.topic_ids" checklist-value="topic.id" > {{ topic.name }}
+      </label>
+    </div>
 
     <div class="field">
       <p class="control">
