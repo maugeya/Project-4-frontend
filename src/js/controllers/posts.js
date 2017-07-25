@@ -36,6 +36,8 @@ function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth) {
   const vm = this;
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
+
+
   vm.post = Post.get($stateParams);
 
   function postsDelete() {

@@ -1,0 +1,9 @@
+  <div class="mh-mentions">
+    <ol ng-if="options.length">
+      <li ng-repeat="user in options" ng-click="mention(user)" ng-class="{selected: $index === selectedIndex}">
+        <strong>{{ user.username }}</strong>
+        <em>{{ user.firstname }} {{ user.lastname }}</em>
+      </li>
+    </ol>
+    <textarea ng-model="body" ng-trim="false"></textarea>
+  </div>
