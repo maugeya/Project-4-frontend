@@ -2,13 +2,13 @@ angular
 .module('spotlightApp')
 .controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$rootScope', '$state' , '$auth', '$scope', 'User'];
-function MainCtrl($rootScope, $state , $auth, $scope, User ) {
+MainCtrl.$inject = ['$rootScope', '$state' , '$auth'];
+function MainCtrl($rootScope, $state , $auth) {
   const vm = this;
   vm.isAuthenticated = $auth.isAuthenticated;
 
   $rootScope.$on('error', (e, err) => {
-    console.log(e, err);
+    // console.log(e, err);
     vm.message = err.data.message;
 
     if(err.status === 401) {
@@ -29,13 +29,5 @@ function MainCtrl($rootScope, $state , $auth, $scope, User ) {
     $state.go('home');
   }
   vm.logout = logout;
-
-  vm.users = User.query();
-
-
-
-  $scope.$watch(() => vm.mentions, (val) => { //watch the mentions, as they change return their values and map over the users and match any with the matching ids
-    vm.mention_ids = (val || []).map(user => user.id);
-  });
 
 }

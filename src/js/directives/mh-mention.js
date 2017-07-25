@@ -58,7 +58,7 @@ function mhMentions(filterFilter) {
         let searchString = (val.substr(getIndexOfLastWord(val)).match(regex) || [])[0];
         searchString = searchString ? searchString.substr(1) : null;
         //take the @ symbol off
-        console.log(searchString, $scope.users);
+        // console.log(searchString, $scope.users);
         $scope.options = filterFilter($scope.users, { username: searchString });
         $scope.selectedIndex = 0;
 

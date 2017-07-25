@@ -10,7 +10,7 @@ function RegisterCtrl($auth, $state, $rootScope, Topic) {
   vm.topics = Topic.query();
 
   function submit() {
-    console.log(vm.user);
+    // console.log(vm.user);
     if (vm.registerForm.$valid) {
       $auth.signup(vm.user)
       .then((res) => {
