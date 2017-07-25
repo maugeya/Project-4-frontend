@@ -21,14 +21,15 @@
   <button ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment(comment)">Delete</button>
 </div>
 <div>
-  <mh-mentions ng-model="main.body" users="main.users" mentions="main.mentions"></mh-mentions>
-  This post mentions:
-<pre>
-  {{ main.mentions }}
-</pre>
+  <form ng-submit="postsShow.addComment()" name="commentForm">
+    <mh-mentions ng-model="postsShow.comment.body" users="postsShow.users" mentions="postsShow.mentions"></mh-mentions>
+    <button name="submit">Comment</button>
+  </form>
 
-Post mention_ids:
-<pre>
-  {{ main.mention_ids }}
-</pre>
+<div ng-repeat="mention in postsShow.mentions">
+  <h1>{{mention.id}}</h1>
+
+</div>
+  <!-- {{ postsShow.mentions}} -->
+
 </div>
