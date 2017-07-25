@@ -4,7 +4,7 @@
 <div class="columns is-multiline">
     <div ng-repeat="post in postsIndex.all" class="column is-one-third">
       <h3><a ui-sref="postsShow({ id: post.id })">{{ post.title }}</a></h3>
-      <img src="{{ post.image }}">
+      <img ng-src="{{ post.image_src }}">
       <ul ng-repeat="topic in post.topics">
         <li>{{ topic.name }}</li>
       </ul>

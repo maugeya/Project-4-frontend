@@ -1,6 +1,5 @@
 <h1>New Post</h1>
 
-{{ postsNew.post.image }}
 <form name="postsNew.newForm" ng-submit="postsNew.create()">
   <div class="form-group">
     <label for="title">Title</label>
@@ -17,7 +16,6 @@
   <div class="">
     <img ng-src="{{postsNew.post.base64}}" alt="">
   </div>
-
   <div class="">
     <label for="topics">Topics</label>
     <label ng-repeat="topic in postsNew.topics">
