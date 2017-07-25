@@ -20,47 +20,16 @@
   <p> {{ comment.body }}</p>
   <button ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment(comment)">Delete</button>
 </div>
+<div>
+  <form ng-submit="postsShow.addComment()" name="commentForm">
+    <mh-mentions ng-model="postsShow.comment.body" users="postsShow.users" mentions="postsShow.mentions"></mh-mentions>
+    <button name="submit">Comment</button>
+  </form>
 
+<div ng-repeat="mention in postsShow.mentions">
+  <h1>{{mention.id}}</h1>
 
-<!-- <h1>Join the discussion!</h1>
-<form ng-submit="postsShow.addComment()">
-  <textarea ui-mention mention type="text" name="body" ng-model="postsShow.comment.body"></textarea>
-  <button name="submit">Comment</button>
-</form> -->
+</div>
+  <!-- {{ postsShow.mentions}} -->
 
-
-
-  <h1>UI Mention</h1>
-
-<!-- <div class="mention-container">
-    <textarea ui-mention mention
-      ng-model="postsShow.comment.body"
-      placeholder="Use @mention to trigger"
-      ng-trim="false"
-      choices="postsShow.users"
-      ></textarea>
-    <div></div>
-
-    mention.mentions: {{ $mention.mentions }}
-
-    <ul ng-if="$mention.choices.length" class="dropdown">
-      <li ng-repeat="choice in $mention.choices" ng-class="{active:$mention.activeChoice==choice}">
-        <a ng-click="$mention.select(choice)">
-          {{::choice.username}}
-        </a>
-      </li>
-    </ul>
-  </div> -->
-
-  <div class="dg-mention">
-    <div class="name_tag_list">
-      <ul>
-        <li></li>
-      </ul>
-    </div>
-      <textarea name="name" rows="8" cols="80">
-      </textarea>
-
-
-
-  </div>
+</div>

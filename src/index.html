@@ -26,7 +26,6 @@
         <span></span>
       </div>
     </div>
-
     <div id="navMenuExample" class="navbar-menu" ng-class="{ 'is-active': menuIsOpen }">
       <div class="navbar">
         <a class="navbar-item" ui-sref="postsIndex">
@@ -37,7 +36,7 @@
         </a>
       </div>
       <div class="navbar-end">
-        <a class="navbar-item" ui-sref="login" ng-if="!main.isAuthenticated()">
+        <a class="navbar-item" ui-sref="login" ng-if="!main.isAuthenticated() ">
           Login
         </a>
         <a class="navbar-item" ui-sref="register" ng-if="!main.isAuthenticated()">
@@ -48,6 +47,9 @@
             <i class="fa fa-bell-o"></i>
           </span>
         </a>
+        <a class="navbar-item" ui-sref="usersShow({id:main.currentUser.id})" ng-if="main.isAuthenticated()">
+          My Tags
+        </a>
         <a class="navbar-item" ng-if="main.isAuthenticated()" ng-click="main.logout()">
           Logout
         </a>
@@ -55,7 +57,12 @@
       </div>
     </div>
   </nav>
-  <main ui-view>
-  </main>
+  <div class="container">
+    <div class="message" ng-if="main.message">
+      <p>{{ main.message }}</p>
+    </div>
+    <main ui-view>
+    </main>
+  </div>
 </body>
 </html>
