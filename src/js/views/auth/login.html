@@ -5,20 +5,27 @@
 
       <div class="field">
         <p class="control has-icons-left">
-          <input class="input" type="text" placeholder="Email" id="email" name="email" ng-model="login.credentials.email">
+          <input class="input" type="text" placeholder="Email" id="email" name="email" ng-model="login.credentials.email" required>
           <span class="icon is-medium is-left">
             <i class="fa fa-envelope"></i>
           </span>
         </p>
+        <div class="ng-message-error" ng-messages="login.loginForm.email.$error"        ng-show="(login.loginForm.$submitted || login.loginForm.email.$touched)">
+          <p ng-message="required">Please enter your email</p>
+        </div>
       </div>
+
 
       <div class="field">
         <p class="control has-icons-left">
-          <input class="input" type="password" placeholder="Password" id="password" name="password" ng-model="login.credentials.password">
+          <input class="input" type="password" placeholder="Password" id="password" name="password" ng-model="login.credentials.password" required>
           <span class="icon is-medium is-left">
             <i class="fa fa-lock"></i>
           </span>
         </p>
+        <div class="ng-message-error" ng-messages="login.loginForm.password.$error"        ng-show="(login.loginForm.$submitted || login.loginForm.password.$touched)">
+          <p ng-message="required">Please enter your Password</p>
+        </div>
       </div>
 
       <div class="field">
