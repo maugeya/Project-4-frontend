@@ -12,7 +12,7 @@
     <ul ng-repeat="topic in postsShow.post.topics">
       <li>{{ topic.name }}</li>
     </ul>
-        <button ui-sref="eventsEdit({id: eventsShow.event.id})" ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id">Edit</button>
+    <button ui-sref="eventsEdit({id: eventsShow.event.id})" ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id">Edit</button>
   </div>
 </div>
 <div ng-repeat="comment in postsShow.post.comments" class="column is-half">
@@ -26,10 +26,10 @@
     <button name="submit">Comment</button>
   </form>
 
-<div ng-repeat="mention in postsShow.mentions">
-  <h1>{{mention.id}}</h1>
+  <div ng-repeat="mention in postsShow.mentions">
+    <h1>{{mention.id}}</h1>
 
-</div>
+  </div>
   <!-- {{ postsShow.mentions}} -->
 
 </div>

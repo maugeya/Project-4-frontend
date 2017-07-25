@@ -60,7 +60,7 @@ function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth, $scope)
       vm.post.comments.push(comment);
       vm.comment = {};
 
-      $scope.$watch(() => vm.mentions, (val) => { //watch the mentions, as they change return their values and map over the users and match any with the matching ids
+      $scope.$watch(() => vm.mentions, (val) => { //watch the mentions, as they change. return their values and map over the users and match any with the matching ids
         vm.mention_ids = (val || []).map(user => user.id);
         console.log(vm.mention_ids);
         if(vm.mention_ids.length){
@@ -98,9 +98,10 @@ function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth, $scope)
 
 }
 
-PostsEditCtrl.$inject = ['Post', 'User', '$stateParams', '$state'];
-function PostsEditCtrl(Post, User, $stateParams, $state) {
+PostsEditCtrl.$inject = ['Post', 'User', '$stateParams', '$state', 'Topic'];
+function PostsEditCtrl(Post, User, $stateParams, $state, Topic) {
   const vm = this;
+  vm.topics = Topic.query();
 
   Post.get($stateParams).$promise.then((post) => {
     vm.post = post;

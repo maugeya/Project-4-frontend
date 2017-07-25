@@ -1,21 +1,38 @@
 <!DOCTYPE html>
-<h1>Post Edit</h1>
+<div class="column is-half is-offset-one-quarter">
 
-{{ postsEdit.post.image }}
-<form name="postsEdit.newForm" ng-submit="postsEdit.update()">
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" name="title" id="title" ng-model="postsEdit.post.title" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="body">Post Content</label>
-    <input type="text" name="body" id="body" ng-model="postsEdit.post.body" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="base64">Image</label>
-    <input type="file" base64 name="base64" class="base64" ng-model="postsEdit.post.base64">
-  </div>
-  <img ng-src="{{postsEdit.post.base64}}" alt="">
+  <h1>Post Edit</h1>
+  <form name="postsEdit.editForm" ng-submit="postsEdit.update()" novalidate>
+    <div class="field">
+      <label for="title">Title</label>
+      <input class="input" type="text" name="title" id="title" ng-model="postsEdit.post.title" required>
+      <div class="ng-message-error" ng-messages="postsEdit.editForm.title.$error" ng-show="(postsEdit.editForm.$submitted || postsEdit.editForm.title.$touched)">
+        <p ng-message="required">Please enter a title</p>
+    </div>
+    <div class="field">
+      <label for="body">Post Content</label>
+      <textarea class="textarea" type="text" name="body" id="body" ng-model="postsEdit.post.body" required></textarea>
 
-  <button class="btn btn-primary">Update</button>
-</form>
+        <div class="ng-message-error" ng-messages="postsEdit.editForm.body.$error" ng-show="(postsEdit.editForm.$submitted || postsEdit.editForm.body.$touched)">
+          <p ng-message="required">Please enter some content to your post!</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="base64">Image (Optional)</label>
+      <input class="input" type="file" base64 name="base64" id="base64" ng-model="postsEdit.post.base64">
+    </div>
+    <div class="field">
+      <img ng-src="{{postsEdit.post.base64}}">
+    </div>
+    <div class="field">
+      <label for="topics">Topics</label>
+      <br>
+      <label ng-repeat="topic in postsEdit.topics">
+        <input class="topic_boxes" type="checkbox" name="topics" checklist-model="postsEdit.post.topic_ids" checklist-value="topic.id"> {{ topic.name }}
+      </label>
+    </div>
+
+    <button class="button is-dark is-fullwidth btn-primary">Update</button>
+  </form>
+</div>
