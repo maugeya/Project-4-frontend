@@ -1,41 +1,18 @@
 angular
 .module('spotlightApp')
-.controller('UsersIndexCtrl', UsersIndexCtrl)
 .controller('UsersShowCtrl', UsersShowCtrl)
 .controller('UsersEditCtrl', UsersEditCtrl)
 .controller('UsersDeleteCtrl', UsersDeleteCtrl);
 
 
-UsersIndexCtrl.$inject = ['User'];
-function UsersIndexCtrl(User) {
-  const vm = this;
-  vm.all = User.query();
-}
-
-UsersShowCtrl.$inject = ['User', '$stateParams', '$state', '$auth', '$uibModal'];
-function UsersShowCtrl(User, $stateParams, $state, $auth, $uibModal) {
+UsersShowCtrl.$inject = ['User', '$stateParams'];
+function UsersShowCtrl(User, $stateParams) {
 
   const vm = this;
 
-  User.get($stateParams, (user)=>{
-    vm.user = user;
-    // vm.orders = Order.query({ createdBy: $stateParams.id });
-    // vm.posts = Product.query({ createdBy: user.id });
-  });
 
-  // function openModal() {
-  //   $uibModal.open({
-  //     templateUrl: 'js/views/partials/userDeleteModal.html',
-  //     controller: 'UsersDeleteCtrl as usersDelete',
-  //     resolve: {
-  //       currentUser: () => {
-  //         return vm.user;
-  //       }
-  //     }
-  //   });
-  // }
-  // vm.openModal = openModal;
-
+  vm.user = User.get($stateParams);
+  console.log(vm.user);
 
 }
 

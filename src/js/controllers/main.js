@@ -2,8 +2,8 @@ angular
 .module('spotlightApp')
 .controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$rootScope', '$state' , '$auth'];
-function MainCtrl($rootScope, $state , $auth) {
+MainCtrl.$inject = ['$rootScope', '$state' , '$auth', '$scope', 'User', '$transitions'];
+function MainCtrl($rootScope, $state , $auth, $scope, User, $transitions ) {
   const vm = this;
   vm.isAuthenticated = $auth.isAuthenticated;
 
@@ -18,10 +18,13 @@ function MainCtrl($rootScope, $state , $auth) {
 
   });
 
-  $rootScope.$on('$stateChangeSuccess', (e, state) => {
-    vm.pageName = state.name;
+
+  $transitions.onSuccess({}, (transition) => {
+
     if(vm.stateHasChanged) vm.message = null;
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
+    if($auth.getPayload()) vm.currentUser = $auth.getPayload();
+    vm.pageName = transition.$to().name;
   });
 
   function logout() {
