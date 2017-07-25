@@ -13,10 +13,11 @@ function PostsIndexCtrl(Post) {
 }
 
 
-PostsNewCtrl.$inject = ['Post', '$state'];
-function PostsNewCtrl(Post, $state) {
+PostsNewCtrl.$inject = ['Post', '$state','Topic'];
+function PostsNewCtrl(Post, $state, Topic) {
   const vm = this;
   vm.post = {};
+  vm.topics = Topic.query();
 
   function postsCreate() {
     if(vm.newForm.$valid) {

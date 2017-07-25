@@ -14,7 +14,15 @@
     <label for="base64">Image</label>
     <input type="file" base64 name="base64" id="base64" ng-model="postsNew.post.base64">
   </div>
-  <img ng-src="{{postsNew.post.base64}}" alt="">
+  <div class="">
+    <img ng-src="{{postsNew.post.base64}}" alt="">
+  </div>
 
+  <div class="">
+    <label for="topics">Topics</label>
+    <label ng-repeat="topic in postsNew.topics">
+      <input type="checkbox" name="topics" checklist-model="postsNew.post.topic_ids" checklist-value="topic.id" > {{ topic.name }}
+    </label>
+  </div>
   <button class="btn btn-primary">Update</button>
 </form>
