@@ -53,7 +53,7 @@
       </div>
     </div>
 
-    <div class="">
+    <div class="field">
       <label for="topics">Topics</label>
       <label ng-repeat="topic in register.topics">
         <input type="checkbox" name="topics" checklist-model="register.user.topic_ids" checklist-value="topic.id" > {{ topic.name }}
@@ -74,8 +74,4 @@
     </span>
     <span>Register with Facebook</span>
   </button>
-
-
-  <hr>
-
 </div>

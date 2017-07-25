@@ -1,14 +1,14 @@
 angular
-  .module('spotlightApp')
-  .controller('MainCtrl', MainCtrl);
+.module('spotlightApp')
+.controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$rootScope', '$state' , '$auth'];
-function MainCtrl($rootScope, $state , $auth) {
+MainCtrl.$inject = ['$rootScope', '$state' , '$auth', '$scope', 'User', '$transitions'];
+function MainCtrl($rootScope, $state , $auth, $scope, User, $transitions ) {
   const vm = this;
   vm.isAuthenticated = $auth.isAuthenticated;
 
   $rootScope.$on('error', (e, err) => {
-    console.log(e, err);
+    // console.log(e, err);
     vm.message = err.data.message;
 
     if(err.status === 401) {
@@ -18,10 +18,13 @@ function MainCtrl($rootScope, $state , $auth) {
 
   });
 
-  $rootScope.$on('$stateChangeSuccess', (e, state) => {
-    vm.pageName = state.name;
+
+  $transitions.onSuccess({}, (transition) => {
+
     if(vm.stateHasChanged) vm.message = null;
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
+    if($auth.getPayload()) vm.currentUser = $auth.getPayload();
+    vm.pageName = transition.$to().name;
   });
 
   function logout() {
@@ -29,4 +32,5 @@ function MainCtrl($rootScope, $state , $auth) {
     $state.go('home');
   }
   vm.logout = logout;
+
 }
