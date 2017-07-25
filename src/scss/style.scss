@@ -1,6 +1,28 @@
 // Import all of your scss files here
 @import "./bower_components/bulma/bulma.sass";
 
+$headingsFont: 'Muli', sans-serif;
+
+$textFont: 'Roboto', sans-serif;
+
+main {
+  h1 {
+    font-family: $headingsFont;
+    letter-spacing: 1.1px;
+    font-size: 40px;
+  }
+}
+
+nav {
+  &.navbar {
+    a {
+      font-family: $headingsFont;
+      letter-spacing: 1.1px;
+      font-size: 20px;
+    }
+  }
+}
+
 
 .maintitle {
   text-align: center;
@@ -18,4 +40,10 @@ form {
 
 button {
   margin: 10px 0 10px 0;
+}
+
+input {
+  &.topic_boxes {
+    margin-right: 10px;
+  }
 }
