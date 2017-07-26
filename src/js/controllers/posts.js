@@ -31,12 +31,12 @@ function PostsNewCtrl(Post, $state, Topic) {
 }
 
 
-PostsShowCtrl.$inject = ['Post', 'User', 'Comment', '$stateParams', '$state', '$auth', '$scope'];
-function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth, $scope) {
+PostsShowCtrl.$inject = ['Post', 'User', 'Comment', '$stateParams', '$state', '$auth', '$scope', 'Notification'];
+function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth, $scope, Notification) {
   const vm = this;
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
-
+  vm.mentions = [];
   vm.users = User.query();
   vm.post = Post.get($stateParams);
 
@@ -51,6 +51,7 @@ function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth, $scope)
   function addComment() {
     vm.comment.post_id = vm.post.id;
     vm.comment.user_id = vm.currentUser_id;
+    vm.comment.mention_ids = vm.mentions.map(user => user.id);
 
     Comment
     .save(vm.comment)
@@ -58,28 +59,13 @@ function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth, $scope)
     .then((comment) => {
       // console.log(comment);
       vm.post.comments.push(comment);
+      // console.log('This is the comment id', vm.comment);
       vm.comment = {};
-
-      $scope.$watch(() => vm.mentions, (val) => { //watch the mentions, as they change return their values and map over the users and match any with the matching ids
-        vm.mention_ids = (val || []).map(user => user.id);
-        console.log(vm.mention_ids);
-        if(vm.mention_ids.length){
-          //push the comment id into the notification array of the user whos id matches vm.mention_ids
-          User
-            .get({ id: vm.mention_ids })
-            .$promise
-            .then((user) =>{
-
-              user.notifications.push(vm.comment.id);
-              console.log(user);
-            });
-        }
-
-      });
     });
   }
 
   vm.addComment = addComment;
+
 
   function deleteComment(comment) {
     Comment
