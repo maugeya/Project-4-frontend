@@ -2,11 +2,20 @@
 
 <h1>posts index</h1>
 <div class="columns is-multiline">
-    <div ng-repeat="post in postsIndex.all" class="column is-one-third">
-      <h3><a ui-sref="postsShow({ id: post.id })">{{ post.title }}</a></h3>
-      <img ng-src="{{ post.image_src }}">
-      <ul ng-repeat="topic in post.topics">
-        <li>{{ topic.name }}</li>
-      </ul>
+  <div class="field has-addons">
+    <div class="control is-expanded">
+      <div class="drop-down">
+        <select name="filter" ng-model="postsIndex.filter" ng-options="topic.name as topic.name for topic in postsIndex.topics">
+          <!-- <option selected value="my-tags">My Tags</option> -->
+        </select>
+      </div>
     </div>
+  </div>
+  <div ng-repeat="post in postsIndex.filtered" class="column is-one-third">
+    <h3><a ui-sref="postsShow({ id: post.id })">{{ post.title }}</a></h3>
+    <img ng-src="{{ post.image_src }}">
+    <ul ng-repeat="topic in post.topics">
+      <li>{{ topic.name }}</li>
+    </ul>
+  </div>
 </div>
