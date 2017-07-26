@@ -25,6 +25,7 @@ function MainCtrl($rootScope, $state , $auth, $scope, User, $transitions ) {
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
     if($auth.getPayload()) vm.currentUser = $auth.getPayload();
     vm.pageName = transition.$to().name;
+    console.log(vm.currentUser);
   });
 
   function logout() {
