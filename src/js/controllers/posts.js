@@ -6,10 +6,38 @@ angular
 .controller('PostsEditCtrl', PostsEditCtrl);
 
 
-PostsIndexCtrl.$inject = ['Post'];
-function PostsIndexCtrl(Post) {
+PostsIndexCtrl.$inject = ['Post', 'Topic','User', '$scope', 'filterFilter', '$auth'];
+function PostsIndexCtrl(Post, Topic, User, $scope, filterFilter, $auth) {
   const vm = this;
-  vm.all = Post.query();
+  vm.user = User.get({ id: $auth.getPayload().id });
+  Post.query()
+  .$promise
+  .then((posts) => {
+    vm.all = posts;
+    filterPosts();
+  });
+  vm.topics = Topic.query();
+
+  function myTopicsFilter(post) {
+    return post.topics.find((topic) => {
+      return vm.user.topics.find((userTopic) => {
+        return userTopic.id === topic.id;
+      });
+    });
+  }
+
+  function filterPosts() {
+    if (vm.filter === 'My Tags') {
+      vm.filtered = filterFilter(vm.filtered, myTopicsFilter);
+    } else {
+      const params = { topics: { name: vm.filter }};
+      vm.filtered = filterFilter(vm.all, params);
+    }
+  }
+
+  $scope.$watchGroup([
+    () => vm.filter
+  ], filterPosts);
 }
 
 
@@ -17,6 +45,7 @@ PostsNewCtrl.$inject = ['Post', '$state','Topic'];
 function PostsNewCtrl(Post, $state, Topic) {
   const vm = this;
   vm.post = {};
+  vm.all = Post.query();
   vm.topics = Topic.query();
 
   function postsCreate() {
