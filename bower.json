@@ -21,7 +21,8 @@
     "satellizer": "^0.15.5",
     "bulma": "^0.4.3",
     "checklist-model": "^0.11.0",
-    "angular-messages": "^1.6.5"
+    "angular-messages": "^1.6.5",
+    "angular-notification-icons": "^0.4.4"
   },
   "resolutions": {
     "angular": "1.6.5"

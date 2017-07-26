@@ -6,6 +6,11 @@
   <title>Spotlight</title>
   <script src="https://use.fontawesome.com/ecd9ec3ca9.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Muli|Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="bower_components/angular-notification-icons/dist/angular-notification-icons.min.css">
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script> <!-- Not required, but recommended -->
+  <script src="bower_components/angular-notification-icons/dist/angular-notification-icons.min.js"></script>
   <!-- inject:js -->
   <!-- endinject -->
   <!-- inject:css -->
@@ -44,7 +49,7 @@
         </a>
         <a class="navbar-item" ui-sref="register" ng-if="main.isAuthenticated()">
           <span class="icon is-medium is-right">
-            <i class="fa fa-bell-o"></i>
+             <notification-icon count="main.notify" id="notify"><i class="fa fa-bell-o"></i></notification-icon>
           </span>
         </a>
         <a class="navbar-item" ui-sref="usersShow({id:main.currentUser.id})" ng-if="main.isAuthenticated()">

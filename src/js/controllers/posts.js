@@ -31,8 +31,8 @@ function PostsNewCtrl(Post, $state, Topic) {
 }
 
 
-PostsShowCtrl.$inject = ['Post', 'User', 'Comment', '$stateParams', '$state', '$auth', '$scope', 'Notification'];
-function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth, $scope, Notification) {
+PostsShowCtrl.$inject = ['Post', 'User', 'Comment', '$stateParams', '$state', '$auth'];
+function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth) {
   const vm = this;
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
