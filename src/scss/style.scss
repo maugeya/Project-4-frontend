@@ -71,9 +71,11 @@ html {
   &.home {
     h1 {
       color: black;
+      font-weight: bold;
       font-size: 140px;
       font-family: $headingsFont;
       letter-spacing: 1.1px;
+      text-shadow: 10px 10px 8px #000000;
     }
     h4 {
       color: black;
@@ -99,4 +101,12 @@ html {
     }
 
   }
+}
+
+div {
+  &.content {
+    animation-delay:1.5s;
+    -moz-animation-delay:1.5s;
+    -webkit-animation-delay:1.5s;
+   }
 }

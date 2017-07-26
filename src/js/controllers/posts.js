@@ -35,9 +35,12 @@ function PostsIndexCtrl(Post, Topic, User, $scope, filterFilter, $auth) {
     }
   }
 
+
   $scope.$watchGroup([
     () => vm.filter
   ], filterPosts);
+
+
 }
 
 
