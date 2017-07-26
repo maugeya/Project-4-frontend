@@ -84,9 +84,10 @@ function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth, $scope,
 
 }
 
-PostsEditCtrl.$inject = ['Post', 'User', '$stateParams', '$state'];
-function PostsEditCtrl(Post, User, $stateParams, $state) {
+PostsEditCtrl.$inject = ['Post', 'User', '$stateParams', '$state', 'Topic'];
+function PostsEditCtrl(Post, User, $stateParams, $state, Topic) {
   const vm = this;
+  vm.topics = Topic.query();
 
   Post.get($stateParams).$promise.then((post) => {
     vm.post = post;
