@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html ng-app="spotlightApp">
+<html ng-app="spotlightApp" ng-controller="MainCtrl as main" ng-class="main.pageName">
 <head>
   <base href="/">
   <meta charset="utf-8">
   <title>Spotlight</title>
   <script src="https://use.fontawesome.com/ecd9ec3ca9.js"></script>
+
   <link href="https://fonts.googleapis.com/css?family=Muli|Roboto" rel="stylesheet">
   <!-- inject:js -->
   <!-- endinject -->
   <!-- inject:css -->
   <!-- endinject -->
 </head>
-<body ng-controller="MainCtrl as main" ng-class="main.pageName">
+<body ng-class="main.pageName">
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" ui-sref="home">
