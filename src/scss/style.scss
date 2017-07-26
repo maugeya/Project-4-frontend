@@ -17,6 +17,18 @@ main {
   }
 }
 
+#notify {
+  left: -10px;
+  color: black;
+  font-weight: bolder;
+  font-size: 0.7em;
+}
+
+.overlay {
+  height: 25px;
+  width: 15px;
+}
+
 nav {
   &.navbar {
     a {
@@ -26,8 +38,6 @@ nav {
     }
   }
 }
-
-
 
 
 .maintitle {

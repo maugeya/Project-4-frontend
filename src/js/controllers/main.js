@@ -25,7 +25,23 @@ function MainCtrl($rootScope, $state , $auth, $scope, User, $transitions ) {
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
     if($auth.getPayload()) vm.currentUser = $auth.getPayload();
     vm.pageName = transition.$to().name;
-    console.log(vm.currentUser);
+
+    User
+    .get({ id: vm.currentUser.id })
+    .$promise
+    .then((user) => {
+      const allNotifications = user.notifications;
+
+      vm.notify = 0;
+
+      for(let i = 0; i < allNotifications.length; i++){
+        if(allNotifications[i].read === false) {
+          vm.notify += 1;
+        }
+
+      }
+      console.log(allNotifications);
+    });
   });
 
   function logout() {
