@@ -12,7 +12,8 @@
     <ul ng-repeat="topic in postsShow.post.topics">
       <li>{{ topic.name }}</li>
     </ul>
-    <button ui-sref="eventsEdit({id: eventsShow.event.id})" ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id">Edit</button>
+    <button ui-sref="postsEdit({id: postsShow.post.id})" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Edit</button>
+    <button ng-click="postsShow.delete()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</button>
   </div>
 </div>
 <div ng-repeat="comment in postsShow.post.comments" class="column is-half">
