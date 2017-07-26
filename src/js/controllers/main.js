@@ -2,8 +2,8 @@ angular
 .module('spotlightApp')
 .controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$rootScope', '$state' , '$auth', '$scope', 'User', '$transitions'];
-function MainCtrl($rootScope, $state , $auth, $scope, User, $transitions ) {
+MainCtrl.$inject = ['$rootScope', '$state' , '$auth', '$scope', 'User', '$transitions', '$stateParams', 'Notification'];
+function MainCtrl($rootScope, $state , $auth, $scope, User, $transitions, $stateParams, Notification ) {
   const vm = this;
   vm.isAuthenticated = $auth.isAuthenticated;
 
@@ -31,18 +31,39 @@ function MainCtrl($rootScope, $state , $auth, $scope, User, $transitions ) {
     .$promise
     .then((user) => {
       const allNotifications = user.notifications;
+      const activeNotifications = [];
 
-      vm.notify = 0;
 
       for(let i = 0; i < allNotifications.length; i++){
         if(allNotifications[i].read === false) {
-          vm.notify += 1;
+          activeNotifications.push(allNotifications[i]);
         }
-
       }
-      console.log(allNotifications);
+      vm.activeNotifications = activeNotifications;
+      vm.notify = activeNotifications.length;
     });
   });
+
+
+
+
+  function notificationsUpdate(id) {
+    Notification.get({id})
+    .$promise
+    .then((notification) => {
+      vm.notification = notification;
+      vm.notification.read = true;
+      Notification
+      .update({ id: vm.notification.id }, vm.notification)
+      .$promise
+      .then(() => {
+        $state.go('postsShow', ({ id: notification.post_id }));
+      });
+    });
+
+  }
+
+  vm.notificationsUpdate = notificationsUpdate;
 
   function logout() {
     $auth.logout();

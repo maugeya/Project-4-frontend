@@ -41,6 +41,36 @@
           New Post
         </a>
       </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+      <div class="navbar-link">
+        <span class="icon is-medium is-right">
+           <notification-icon count="main.notify" id="notify"><i class="fa fa-bell-o"></i></notification-icon>
+        </span>
+      </div>
+      <div id="moreDropdown" class="navbar-dropdown">
+        <ul>
+          <li ng-repeat="notification in main.activeNotifications">
+            <a class="navbar-item " ng-click="main.notificationsUpdate(notification.id)">
+              <div class="level is-mobile">
+                <div class="level-left">
+                  <div class="level-item">
+                      <ul>
+                        <li>notification</li>
+                      </ul>
+                  </div>
+                </div>
+                <div class="level-right">
+                  <div class="level-item">
+                    <span class="icon has-text">
+                      <i class="fa fa-bell"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a></li>
+        </ul>
+        </div>
+
       <div class="navbar-end">
         <a class="navbar-item" ui-sref="login" ng-if="!main.isAuthenticated() ">
           Login
@@ -49,9 +79,7 @@
           Register
         </a>
         <a class="navbar-item" ui-sref="register" ng-if="main.isAuthenticated()">
-          <span class="icon is-medium is-right">
-             <notification-icon count="main.notify" id="notify"><i class="fa fa-bell-o"></i></notification-icon>
-          </span>
+
         </a>
         <a class="navbar-item" ui-sref="usersShow({id:main.currentUser.id})" ng-if="main.isAuthenticated()">
           My Tags
@@ -60,14 +88,17 @@
           Logout
         </a>
 
+
       </div>
     </div>
+  </div>
   </nav>
   <div class="container">
     <div class="message" ng-if="main.message">
       <p>{{ main.message }}</p>
     </div>
     <main ui-view>
+
     </main>
   </div>
 </body>
