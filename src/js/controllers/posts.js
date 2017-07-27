@@ -58,13 +58,12 @@ function PostsNewCtrl(Post, $state, Topic) {
   vm.topics = Topic.query();
 
   function postsCreate() {
-    if(vm.newForm.$valid) {
-      Post
-      .save(vm.post)
-      .$promise
-      .then(() => $state.go('postsIndex'));
-    }
+    Post
+    .save(vm.post)
+    .$promise
+    .then(() => $state.go('postsIndex'));
   }
+
   vm.create = postsCreate;
 }
 
@@ -77,11 +76,11 @@ function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth) {
   vm.mentions = [];
   vm.users = User.query();
   Post.get($stateParams)
-    .$promise
-    .then((post) => {
-      vm.post = post;
-      vm.post.comments = vm.post.comments.map(highlightUsername);
-    });
+  .$promise
+  .then((post) => {
+    vm.post = post;
+    vm.post.comments = vm.post.comments.map(highlightUsername);
+  });
 
   function highlightUsername(comment) {
     const regex = /[^\s]*@\b[\.a-z0-9_-]+\b/gi;

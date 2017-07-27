@@ -22,13 +22,18 @@
     <div class="field">
       <img ng-src="{{postsNew.post.base64}}" >
     </div>
-    <div class="field">
-      <label for="topics">Topics</label>
-      <br>
-      <label ng-repeat="topic in postsNew.topics">
-        <input class="topic_boxes" type="checkbox" name="topics" checklist-model="postsNew.post.topic_ids" checklist-value="topic.id" required> {{ topic.name }}
-      </label>
+
+    <div class="field topicDiv">
+      <span ng-repeat="topic in postsNew.topics">
+        <input id="{{ topic.name }}" class="topicInput" type="checkbox" name="topics" checklist-model="postsNew.post.topic_ids" checklist-value="topic.id" >
+        <label class="topicLabel" for="{{ topic.name }}">
+           {{ topic.name }}
+        </label>
+      </span>
+
     </div>
-    <button class="button is-dark is-fullwidth btn-primary">Update</button>
+
+
+    <button class="button is-dark is-fullwidth btn-primary">Post</button>
   </form>
 </div>
