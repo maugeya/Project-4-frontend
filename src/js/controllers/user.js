@@ -10,12 +10,17 @@ function UsersShowCtrl(User, $stateParams, $state, $auth, Topic) {
   vm.topics = Topic.query();
 
 
-  vm.user = User.get($stateParams);
+  User.get($stateParams)
+  .$promise
+  .then((user) => {
+    vm.user = user;
+  });
 
   function usersUpdate() {
     User
-    .$update(vm.user)
-    .then(() => $state.go('home'));
+    .update({ id: vm.user.id }, vm.user)
+    .$promise
+    .then(() => $state.go('postsIndex'));
   }
   vm.update = usersUpdate;
 
@@ -24,6 +29,7 @@ function UsersShowCtrl(User, $stateParams, $state, $auth, Topic) {
 
     User
     .remove({ id: vm.user.id })
+    .$promise
     .then(() => {
       $auth.logout();
       $state.go('home');
