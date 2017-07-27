@@ -2,8 +2,8 @@ angular
   .module('spotlightApp')
   .directive('mhMentions', mhMentions); //mike hayden memoirs
 
-mhMentions.$inject = ['filterFilter']; //injecting filter filter
-function mhMentions(filterFilter) {
+mhMentions.$inject = ['filterFilter', '$rootScope']; //injecting filter filter
+function mhMentions(filterFilter, $rootScope) {
   return {
     replace: true,
     restrict: 'E',
@@ -58,7 +58,7 @@ function mhMentions(filterFilter) {
         let searchString = (val.substr(getIndexOfLastWord(val)).match(regex) || [])[0];
         searchString = searchString ? searchString.substr(1) : null;
         //take the @ symbol off
-        // console.log(searchString, $scope.users);
+    
         $scope.options = filterFilter($scope.users, { username: searchString });
         $scope.selectedIndex = 0;
 
@@ -68,7 +68,9 @@ function mhMentions(filterFilter) {
 
       // allow user selection with keyboard
       $element.on('keydown', (e) => { //when any key is pressed
+
         if($scope.options.length > 0) { //if the ol is populated
+          console.log('beanz');
           if(specialKeyCodes.includes(e.keyCode)) e.preventDefault(); //if the key matches one of the special keys defined above
           // tab or enter, pass in the user that is in the ol to the mention function below
           if(e.keyCode === 9 || e.keyCode === 13) $scope.mention($scope.options[$scope.selectedIndex]);

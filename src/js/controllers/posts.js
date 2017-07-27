@@ -109,7 +109,20 @@ function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth) {
   vm.deleteComment = deleteComment;
 
 
+  function openModal(){
+    const modal = document.querySelector('.modal');
+    modal.classList.add('is-active');
 
+  }
+
+  vm.openModal = openModal;
+
+  function closeModal(){
+    const modal = document.querySelector('.modal');
+    modal.classList.remove('is-active');
+  }
+
+  vm.closeModal = closeModal;
 
 }
 
