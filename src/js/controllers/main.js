@@ -31,32 +31,35 @@ function MainCtrl($rootScope, $state , $auth, $scope, User, $transitions, $state
     if(vm.stateHasChanged) vm.message = null;
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
     if($auth.getPayload()) vm.currentUser = $auth.getPayload();
-    console.log(vm.currentUser.id);
+
     vm.pageName = transition.$to().name;
 
-    User
-    .get({ id: vm.currentUser.id })
-    .$promise
-    .then((user) => {
-      const allNotifications = user.notifications;
-      const activeNotifications = [];
+
+    if($auth.isAuthenticated()){
+      User
+      .get({ id: vm.currentUser.id })
+      .$promise
+      .then((user) => {
+        const allNotifications = user.notifications;
+        const activeNotifications = [];
 
 
-      for(let i = 0; i < allNotifications.length; i++){
-        if(allNotifications[i].read === false) {
-          activeNotifications.push(allNotifications[i]);
+        for(let i = 0; i < allNotifications.length; i++){
+          if(allNotifications[i].read === false) {
+            activeNotifications.push(allNotifications[i]);
+          }
         }
-      }
-      vm.activeNotifications = activeNotifications;
-      vm.notify = activeNotifications.length;
+        vm.activeNotifications = activeNotifications;
+        vm.notify = activeNotifications.length;
 
-      function hasNotifictions(){
-        if(activeNotifications.length === 0){
-          return true;
+        function hasNotifictions(){
+          if(activeNotifications.length === 0){
+            return true;
+          }
         }
-      }
-      vm.hasNotifictions = hasNotifictions;
-    });
+        vm.hasNotifictions = hasNotifictions;
+      });
+    }
 
 
 
