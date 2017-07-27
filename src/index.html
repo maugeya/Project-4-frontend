@@ -40,6 +40,7 @@
             <ul>
               <li ng-repeat="notification in main.activeNotifications">
                 <a class="navbar-item " ng-click="main.notificationsUpdate(notification.id)">
+
                   <div class="level is-mobile">
                       <div class="level-item">
                         <span class="icon has-text">
@@ -93,7 +94,7 @@
                         <div class="level-left">
                           <div class="level-item">
                             <ul>
-                              <li>Notification</li>
+                              <li>@{{ notification.sender }} tagged you </li>
                             </ul>
                           </div>
                         </div>
@@ -102,6 +103,7 @@
                             <span class="icon has-text">
                               <i class="fa fa-bell"></i>
                             </span>
+
                           </div>
                         </div>
                       </div>

@@ -251,3 +251,30 @@ div {
   }
 
 }
+
+
+.topicDiv{
+  width: 500px;
+  top: 300px;
+}
+
+.topicLabel {
+  background-color: darkgrey;
+  display: inline-block;
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+
+.topicInput {
+  display: none;
+  &:checked ~ label {
+    background-color: dodgerblue;
+  }
+}
+
+.icon {
+  display: block;
+  float: right;
+}

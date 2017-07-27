@@ -14,16 +14,16 @@
     </ul>
 
 
-    <button ui-sref="postsEdit({id: postsShow.post.id})" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Edit</button>
+    <a class="button is-info" ui-sref="postsEdit({id: postsShow.post.id})" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Edit</a>
 
-    <button ng-click="main.openModal()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</button>
+    <a class="button is-danger" ng-click="main.openModal()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</a>
   </div>
 </div>
 <div ng-repeat="comment in postsShow.post.comments" class="column is-half">
   <h3>{{ comment.user.username }}</h3>
   <p> {{ comment.body }}</p>
   <!-- <button ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment(comment)">Delete</button> -->
-  <button ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment()">Delete</button>
+  <a class="button is-danger" ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment()">Delete</a>
 </div>
 
 
