@@ -7,10 +7,10 @@ $headingsFont: 'Muli', sans-serif;
 $textFont: 'Roboto', sans-serif;
 $purple: black;
 $blue: #313B72;
-$green: rgb(255, 162, 81);
-$greenFaded: rgba(255, 162, 81, 0.7);
-$lightGreen: rgb(188, 24, 108);
-$lightGreenFaded: rgba(188, 24, 108, 0.7);
+$gold: rgb(255, 162, 81);
+$dullGold: rgba(255, 162, 81, 0.7);
+$brightPink: rgb(188, 24, 108);
+$pink: rgba(188, 24, 108, 0.7);
 $red: crimson;
 
 
@@ -19,7 +19,7 @@ $red: crimson;
   background-color: rgba(255,255,255,0.9);
   margin: 10px;
   overflow: hidden;
-  border: 1px solid $green;
+  border: 1px solid $gold;
   border-radius: 50px 0px;
   padding: 30px;
 
@@ -40,35 +40,6 @@ main {
 
 //button styling
 
-// button {
-//   width: 100px;
-//   font-weight: bold;
-//   &.deleteBtn {
-//     background-color: $red;
-//     border-radius: 5px;
-//     color: black;
-//     &:hover {
-//       color: white;
-//     }
-//   }
-//   &.editBtn {
-//     background-color: lighten($blue, 20%);
-//     border-radius: 5px;
-//     color: black;
-//     &:hover {
-//       color: white;
-//     }
-//   }
-//   &.submitBtn {
-//     background-color: $green;
-//     border-radius: 5px;
-//     color: black;
-//     &:hover {
-//       color: white;
-//     }
-//   }
-//
-// }
 
 #notify {
   left: -10px;
@@ -81,7 +52,7 @@ main {
   height: 25px;
   width: 15px;
   font-size: 13px;
-  background-color: $lightGreen;
+  background-color: $brightPink;
 }
 
 nav {
@@ -177,7 +148,7 @@ div {
     p{
       font-size: 15px;
       &.created_by {
-        color: $green;
+        color: $gold;
       }
     }
     a {
@@ -185,11 +156,11 @@ div {
       font-weight: bold;
       font-size: 25px;
       &:hover {
-        color: $green;
+        color: $gold;
       }
     }
     &:hover {
-      border: 1px solid $lightGreen;
+      border: 1px solid $brightPink;
     }
     &:nth-child(2n) {
       color: $purple;
@@ -197,30 +168,30 @@ div {
       border-radius: 0px 50px;
       p {
         &.created_by {
-          color: $lightGreen;
+          color: $brightPink;
         }
       }
 
       &:hover {
-        border: 1px solid $green;
+        border: 1px solid $gold;
       }
       a {
         color: $purple;
         font-weight: bold;
         &:hover {
-          color: $lightGreen;
+          color: $brightPink;
         }
       }
     }
   }
 }
 
-// .postsShowContent {
-//   border: 1px solid $green;
-// }
-// .postsShowContentOther{
-//   border: 1px solid $lightGreen;
-// }
+.postsShowContent {
+  border: 1px solid $gold;
+}
+.postsShowContentOther{
+  border: 1px solid $brightPink;
+}
 
 .mh-mentions ol li.selected {
   background-color: #efefef;
@@ -308,7 +279,7 @@ h3 {
     font-size: 30px;
   }
   a {
-    color: $green;
+    color: $gold;
     &:hover {
       color: $purple;
     }
@@ -371,7 +342,7 @@ div {
       }
     }
     h1 {
-      color: $green;
+      color: $gold;
       font-size: 45px;
     }
     a {
@@ -384,7 +355,7 @@ div {
 
     div {
       &.commentBox {
-        background-color: $lightGreen;
+        background-color: $brightPink;
         margin-bottom: 8px;
         border-radius: 8px;
         h3 {
@@ -450,6 +421,23 @@ div {
       h1 {
         font-size: 40px;
         margin-top: 200px;
+      }
+    }
+  }
+}
+
+//users show page
+
+div {
+  &.usersPostContent {
+    p {
+      a {
+        &.usersPosts {
+          color: black;
+          &:hover {
+            color: $brightPink;
+          }
+        }
       }
     }
   }

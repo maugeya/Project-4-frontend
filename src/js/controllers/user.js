@@ -3,11 +3,12 @@ angular
 .controller('UsersShowCtrl', UsersShowCtrl);
 
 
-UsersShowCtrl.$inject = ['User', '$stateParams', '$state', '$auth', 'Topic'];
-function UsersShowCtrl(User, $stateParams, $state, $auth, Topic) {
+UsersShowCtrl.$inject = ['User', '$stateParams', '$state', '$auth', 'Topic', 'Post'];
+function UsersShowCtrl(User, $stateParams, $state, $auth, Topic, Post) {
 
   const vm = this;
   vm.topics = Topic.query();
+  vm.posts = Post.query();
 
 
   User.get($stateParams)
