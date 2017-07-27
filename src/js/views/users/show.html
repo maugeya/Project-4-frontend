@@ -24,9 +24,12 @@
             <button type="submit" class="button is-dark is-halfwidth">Update Tags</button>
           </p>
         </div>
+        <div class="field usersPostContent">
+          <p class="control">Your posts</p>
+          <p ng-repeat="post in usersShow.user.posts"><a class="usersPosts" ui-sref="postsShow({ id: post.id })">{{post.title}}</a></p>
+
+        </div>
       </form>
-
-
       <a class="button is-danger is-halfwidth" ng-click="main.openModal()">Delete Account </a>
 
 

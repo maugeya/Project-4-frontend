@@ -62,6 +62,7 @@ function PostsNewCtrl(Post, $state, Topic) {
     .save(vm.post)
     .$promise
     .then(() => $state.go('postsIndex'));
+
   }
 
   vm.create = postsCreate;
@@ -84,6 +85,7 @@ function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth) {
 
   function highlightUsername(comment) {
     const regex = /[^\s]*@\b[\.a-z0-9_-]+\b/gi;
+    console.log(comment.body.match(regex));
     const usernames = comment.body.match(regex);
     if(usernames) usernames.forEach((username) => {
       comment.body = comment.body.replace(username, `<span class="username">${username}</span>`);
