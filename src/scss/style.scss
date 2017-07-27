@@ -227,6 +227,7 @@ div {
     article {
       div {
         &.content {
+          word-wrap: break-word;
           p {
             &.topics_label {
               margin-bottom: none;
@@ -370,15 +371,24 @@ div {
           font-size: 16px;
           font-weight: bold;
         }
-        .username {
-          color: dodgerblue;
+        p {
+          &.commentContent {
+            span {
+              &.username {
+                color: dodgerblue;
+              }
+            }
+          }
+
         }
 
       }
     }
   }
 }
-
+.username {
+  color: dodgerblue;
+}
 .topicDiv{
   width: 400px;
   height: 200px;
