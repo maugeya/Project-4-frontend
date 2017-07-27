@@ -40,35 +40,6 @@ main {
 
 //button styling
 
-// button {
-//   width: 100px;
-//   font-weight: bold;
-//   &.deleteBtn {
-//     background-color: $red;
-//     border-radius: 5px;
-//     color: black;
-//     &:hover {
-//       color: white;
-//     }
-//   }
-//   &.editBtn {
-//     background-color: lighten($blue, 20%);
-//     border-radius: 5px;
-//     color: black;
-//     &:hover {
-//       color: white;
-//     }
-//   }
-//   &.submitBtn {
-//     background-color: $gold;
-//     border-radius: 5px;
-//     color: black;
-//     &:hover {
-//       color: white;
-//     }
-//   }
-//
-// }
 
 #notify {
   left: -10px;
@@ -216,10 +187,10 @@ div {
 }
 
 .postsShowContent {
-  border: 1px solid $green;
+  border: 1px solid $gold;
 }
 .postsShowContentOther{
-  border: 1px solid $lightGreen;
+  border: 1px solid $brightPink;
 }
 
 .mh-mentions ol li.selected {
