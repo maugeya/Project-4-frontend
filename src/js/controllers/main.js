@@ -42,7 +42,17 @@ function MainCtrl($rootScope, $state , $auth, $scope, User, $transitions, $state
       }
       vm.activeNotifications = activeNotifications;
       vm.notify = activeNotifications.length;
+
+      function hasNotifictions(){
+        if(activeNotifications.length === 0){
+          return true;
+        }
+      }
+      vm.hasNotifictions = hasNotifictions;
     });
+
+
+
   });
 
 
@@ -66,11 +76,30 @@ function MainCtrl($rootScope, $state , $auth, $scope, User, $transitions, $state
 
   vm.notificationsUpdate = notificationsUpdate;
 
+
+
+  function openModal(){
+    const modal = document.querySelector('.modal');
+    modal.classList.add('is-active');
+
+  }
+
+  vm.openModal = openModal;
+
+  function closeModal(){
+    const modal = document.querySelector('.modal');
+    modal.classList.remove('is-active');
+  }
+
+  vm.closeModal = closeModal;
+
+
   function logout() {
     $auth.logout();
     $state.go('home');
   }
   vm.logout = logout;
+
 
 
 

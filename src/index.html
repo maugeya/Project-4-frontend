@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Muli|Roboto" rel="stylesheet">
   <link rel="stylesheet" href="bower_components/angular-notification-icons/dist/angular-notification-icons.min.css">
   <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <!-- Not required, but recommended -->
   <script src="bower_components/angular-notification-icons/dist/angular-notification-icons.min.js"></script>
   <link rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -21,86 +21,122 @@
 <body ng-class="main.pageName">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" ui-sref="home">
+      <a class="navbar-item is-hidden-mobile" ui-sref="home">
         <strong>Spotlight</strong>
-        <span class="icon is-medium is-right">
-          <i class="fa fa-lightbulb-o"></i>
-        </span>
       </a>
-      <div class="navbar-burger burger" data-target="navMenuExample" ng-click="menuIsOpen = !menuIsOpen">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-    <div id="navMenuExample" class="navbar-menu" ng-class="{ 'is-active': menuIsOpen }">
-      <div class="navbar">
-        <a class="navbar-item" ui-sref="postsIndex">
-          Posts
-        </a>
-        <a class="navbar-item" ui-sref="postsNew">
-          New Post
-        </a>
-      </div>
-      <div class="navbar-item has-dropdown is-hoverable">
-      <div class="navbar-link">
-        <span class="icon is-medium is-right">
-           <notification-icon count="main.notify" id="notify"><i class="fa fa-bell-o"></i></notification-icon>
-        </span>
-      </div>
-      <div id="moreDropdown" class="navbar-dropdown">
-        <ul>
-          <li ng-repeat="notification in main.activeNotifications">
-            <a class="navbar-item " ng-click="main.notificationsUpdate(notification.id)">
-              <div class="level is-mobile">
-                <div class="level-left">
-                  <div class="level-item">
-                      <ul>
-                        <li>notification</li>
-                      </ul>
+      <div class="navbar-end is-hidden-desktop">
+        <div class="navbar-item" ng-if="main.isAuthenticated() && main.hasNotifictions() ">
+          <span class="icon is-medium is-right">
+            <i class="fa fa-bell-o"></i>
+          </span>
+        </div>
+        <div class="navbar-item is-hidden-desktop has-dropdown is-hoverable">
+          <div class="navbar-link" ng-if="main.isAuthenticated() && !main.hasNotifictions()">
+            <span class="icon is-medium is-right">
+              <notification-icon count="main.notify"><i class="fa fa-bell-o notify"></i></notification-icon>
+            </span>
+          </div>
+          <div id="moreDropdown" class="navbar-dropdown">
+            <ul>
+              <li ng-repeat="notification in main.activeNotifications">
+                <a class="navbar-item " ng-click="main.notificationsUpdate(notification.id)">
+                  <div class="level is-mobile">
+                      <div class="level-item">
+                        <span class="icon has-text">
+                          <i class="fa fa-bell"></i>
+                        </span>
+                      </div>
                   </div>
-                </div>
-                <div class="level-right">
-                  <div class="level-item">
-                    <span class="icon has-text">
-                      <i class="fa fa-bell"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a></li>
-        </ul>
+                </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <a class="navbar-item is-hidden-desktop" ui-sref="home">
+          <strong class="mobiletitle">Spotlight</strong>
+        </a>
+        <div class="navbar-burger burger" data-target="navMenuExample" ng-click="menuIsOpen = !menuIsOpen">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div id="navMenuExample" class="navbar-menu" ng-class="{ 'is-active': menuIsOpen }">
+        <div class="navbar">
+          <a class="navbar-item" ui-sref="postsIndex">
+            Posts
+          </a>
+          <a class="navbar-item" ui-sref="postsNew">
+            New Post
+          </a>
         </div>
 
-      <div class="navbar-end">
-        <a class="navbar-item" ui-sref="login" ng-if="!main.isAuthenticated() ">
-          Login
-        </a>
-        <a class="navbar-item" ui-sref="register" ng-if="!main.isAuthenticated()">
-          Register
-        </a>
-        <a class="navbar-item" ui-sref="register" ng-if="main.isAuthenticated()">
 
-        </a>
-        <a class="navbar-item" ui-sref="usersShow({id:main.currentUser.id})" ng-if="main.isAuthenticated()">
-          My Tags
-        </a>
-        <a class="navbar-item" ng-if="main.isAuthenticated()" ng-click="main.logout()">
-          Logout
-        </a>
+        <div class="navbar-end">
+          <div class="navbar-end is-hidden-mobile">
+            <div class="navbar-item" ng-if="main.isAuthenticated() && main.hasNotifictions() ">
+              <span class="icon is-medium is-right">
+                <i class="fa fa-bell-o"></i>
+              </span>
+            </div>
+            <div class="navbar-item is-hidden-mobile has-dropdown is-hoverable">
+                <div class="navbar-link" ng-if="main.isAuthenticated()&& !main.hasNotifictions()">
+                <span class="icon is-medium is-right">
+                  <notification-icon count="main.notify"><i class="fa fa-bell-o notify"></i></notification-icon>
+                </span>
+              </div>
+              <div id="moreDropdown" class="navbar-dropdown">
+                <ul>
+                  <li ng-repeat="notification in main.activeNotifications">
+                    <a class="navbar-item " ng-click="main.notificationsUpdate(notification.id) && !main.hasNotifictions()">
+                      <div class="level is-mobile">
+                        <div class="level-left">
+                          <div class="level-item">
+                            <ul>
+                              <li>Notification</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="level-right">
+                          <div class="level-item">
+                            <span class="icon has-text">
+                              <i class="fa fa-bell"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
 
+            <a class="navbar-item" ui-sref="login" ng-if="!main.isAuthenticated() ">
+              Login
+            </a>
+            <a class="navbar-item" ui-sref="register" ng-if="!main.isAuthenticated()">
+              Register
+            </a>
+            <a class="navbar-item" ui-sref="register" ng-if="main.isAuthenticated()">
+
+            </a>
+            <a class="navbar-item" ui-sref="usersShow({id:main.currentUser.id})" ng-if="main.isAuthenticated()">
+              My Tags
+            </a>
+            <a class="navbar-item" ng-if="main.isAuthenticated()" ng-click="main.logout()">
+              Logout
+            </a>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="message" ng-if="main.message">
+          <p>{{ main.message }}</p>
+        </div>
+        <main ui-view>
+
+        </main>
       </div>
-    </div>
-  </div>
-  </nav>
-  <div class="container">
-    <div class="message" ng-if="main.message">
-      <p>{{ main.message }}</p>
-    </div>
-    <main ui-view>
-
-    </main>
-  </div>
-</body>
-</html>
+    </body>
+    </html>

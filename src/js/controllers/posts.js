@@ -112,9 +112,6 @@ function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth) {
 
   vm.deleteComment = deleteComment;
 
-
-
-
 }
 
 PostsEditCtrl.$inject = ['Post', 'User', '$stateParams', '$state', 'Topic'];
