@@ -34,19 +34,13 @@
     <button class="button is-fullwidth is-dark submitBtn" name="submit">Comment</button>
   </form>
 
-<div ng-repeat="comment in postsShow.post.comments" class="column is-fullwidth box">
-  <h3>{{ comment.user.username }}</h3>
-  <p> {{ comment.body }}</p>
-  <!-- <button ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment(comment)">Delete</button> -->
-  <a class="button is-danger" ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment()">Delete</a>
-</div>
-
-
-
+  <div ng-repeat="comment in postsShow.post.comments" class="column is-fullwidth box">
+    <h3>{{ comment.user.username }}</h3>
+    <p class="commentContent" ng-bind-html="comment.body"> {{ comment.body }}</p>
+    <a class="button is-danger" ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment()">Delete</a>
+  </div>
 
 </div>
-
-
 
 <div class="modal">
   <div class="modal-background"></div>

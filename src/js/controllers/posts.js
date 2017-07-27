@@ -58,12 +58,11 @@ function PostsNewCtrl(Post, $state, Topic) {
   vm.topics = Topic.query();
 
   function postsCreate() {
-    if(vm.newForm.$valid) {
-      Post
-      .save(vm.post)
-      .$promise
-      .then(() => $state.go('postsIndex'));
-    }
+    Post
+    .save(vm.post)
+    .$promise
+    .then(() => $state.go('postsIndex'));
+
   }
   vm.create = postsCreate;
 }

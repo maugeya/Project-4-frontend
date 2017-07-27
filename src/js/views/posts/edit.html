@@ -25,12 +25,14 @@
     <div class="field">
       <img ng-src="{{postsEdit.post.base64}}">
     </div>
-    <div class="field">
-      <label for="topics">Topics</label>
-      <br>
-      <label ng-repeat="topic in postsEdit.topics">
-        <input class="topic_boxes" type="checkbox" name="topics" checklist-model="postsEdit.post.topic_ids" checklist-value="topic.id"> {{ topic.name }}
-      </label>
+    <div class="field topicDiv">
+      <span ng-repeat="topic in postsEdit.topics">
+        <input id="{{ topic.name }}" class="topicInput" type="checkbox" name="topics" checklist-model="postsEdit.post.topic_ids" checklist-value="topic.id" >
+        <label class="topicLabel" for="{{ topic.name }}">
+           {{ topic.name }}
+        </label>
+      </span>
+
     </div>
 
     <button class="button is-dark is-fullwidth btn-primary">Update</button>
