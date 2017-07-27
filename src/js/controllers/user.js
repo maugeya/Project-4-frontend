@@ -42,4 +42,5 @@ function UsersShowCtrl(User, $stateParams, $state, $auth, Topic) {
   vm.logout = logout;
 
   vm.usersDelete = usersDelete;
+
 }
