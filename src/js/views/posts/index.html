@@ -3,7 +3,9 @@
 <div class="filter column is-twelve">
   <div class="drop-down">
     <p style="display: inline" >Filter Posts:</p>
-    <select class="select" name="filter" ng-model="postsIndex.filter" ng-options="topic.name as topic.name for topic in postsIndex.topics">
+    <select class="select" name="filter" ng-model="postsIndex.filter">
+      <option ng-if="main.isAuthenticated()">My Tags</option>
+      <option ng-repeat="topic in postsIndex.topics">{{ topic.name }}</option>
     </select>
 
   </div>

@@ -8,10 +8,14 @@
 
 
 <form ng-submit="usersShow.update()">
-  <div class="field">
-    <label ng-repeat="topic in usersShow.topics">
-      <input type="checkbox" name="topics" checklist-model="usersShow.user.topic_ids" checklist-value="topic.id" > {{ topic.name }}
-    </label>
+  <div class="field topicDiv">
+    <span ng-repeat="topic in usersShow.topics">
+      <input id="{{ topic.name }}" class="topicInput" type="checkbox" name="topics" checklist-model="usersShow.user.topic_ids" checklist-value="topic.id" >
+      <label class="topicLabel" for="{{ topic.name }}">
+         {{ topic.name }}
+      </label>
+    </span>
+
   </div>
   <div class="field">
     <p class="control">

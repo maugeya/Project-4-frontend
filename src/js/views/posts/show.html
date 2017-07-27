@@ -22,6 +22,18 @@
       <button class="button deleteBtn" ng-click="main.openModal()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</button>
     </div>
 
+    <a class="button is-info" ui-sref="postsEdit({id: postsShow.post.id})" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Edit</a>
+
+    <a class="button is-danger" ng-click="main.openModal()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</a>
+  </div>
+</div>
+<div ng-repeat="comment in postsShow.post.comments" class="column is-half">
+  <h3>{{ comment.user.username }}</h3>
+  <p> {{ comment.body }}</p>
+  <!-- <button ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment(comment)">Delete</button> -->
+  <a class="button is-danger" ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment()">Delete</a>
+</div>
+
 
     <div class="column is-half is-offset-one-quarter">
       <form ng-submit="postsShow.addComment()" name="commentForm">

@@ -9,7 +9,12 @@ angular
 PostsIndexCtrl.$inject = ['Post', 'Topic','User', '$scope', 'filterFilter', '$auth'];
 function PostsIndexCtrl(Post, Topic, User, $scope, filterFilter, $auth) {
   const vm = this;
-  vm.user = User.get({ id: $auth.getPayload().id });
+
+
+  if($auth.getPayload()) {
+    vm.user = User.get({ id: $auth.getPayload().id });
+    vm.filter = 'My Tags';
+  }
   Post.query()
   .$promise
   .then((posts) => {
@@ -27,8 +32,8 @@ function PostsIndexCtrl(Post, Topic, User, $scope, filterFilter, $auth) {
   }
 
   function filterPosts() {
-    if (vm.filter === 'My Tags') {
-      vm.filtered = filterFilter(vm.filtered, myTopicsFilter);
+    if ($auth.isAuthenticated() && vm.filter === 'My Tags') {
+      vm.filtered = filterFilter(vm.all, myTopicsFilter);
     } else {
       const params = { topics: { name: vm.filter }};
       vm.filtered = filterFilter(vm.all, params);
