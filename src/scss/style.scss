@@ -24,7 +24,7 @@ main {
   }
 }
 
-.notify {
+#notify {
   left: -10px;
   color: black;
   font-weight: bolder;
@@ -47,8 +47,7 @@ nav {
 
 }
 .mobiletitle {
-  width: 100%;
-  margin-left: 50px;
+  margin: 50px;
 }
 
 
@@ -197,6 +196,11 @@ div {
   }
 }
 
+#tags {
+  display: inline-block;
+  padding-right: 4px;
+}
+
 
 
 div {
@@ -250,4 +254,18 @@ div {
     }
   }
 
+}
+
+
+
+
+@media only screen and(max-width: 575px) {
+  body{
+    &.home{
+      h1 {
+        font-size: 40px;
+        margin-top: 200px;
+      }
+    }
+  }
 }

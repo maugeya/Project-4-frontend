@@ -32,24 +32,12 @@
         </div>
         <div class="navbar-item is-hidden-desktop has-dropdown is-hoverable">
           <div class="navbar-link" ng-if="main.isAuthenticated() && !main.hasNotifictions()">
-            <span class="icon is-medium is-right">
-              <notification-icon count="main.notify"><i class="fa fa-bell-o notify"></i></notification-icon>
+            <span class="icon is-medium is-right"><a ui-sref="postsShow({id:main.activeNotifications[0].post_id})"
+              ng-click="main.notificationsUpdate(main.activeNotifications[0].id)">
+              <notification-icon id="notify" count="main.notify"><i class="fa fa-bell-o"></i></notification-icon>
+            </a>
             </span>
           </div>
-          <div id="moreDropdown" class="navbar-dropdown">
-            <ul>
-              <li ng-repeat="notification in main.activeNotifications">
-                <a class="navbar-item " ng-click="main.notificationsUpdate(notification.id)">
-                  <div class="level is-mobile">
-                      <div class="level-item">
-                        <span class="icon has-text">
-                          <i class="fa fa-bell"></i>
-                        </span>
-                      </div>
-                  </div>
-                </a></li>
-              </ul>
-            </div>
           </div>
         </div>
         <a class="navbar-item is-hidden-desktop" ui-sref="home">
@@ -88,7 +76,7 @@
               <div id="moreDropdown" class="navbar-dropdown moreDropdown">
                 <ul>
                   <li ng-repeat="notification in main.activeNotifications">
-                    <a class="navbar-item " ng-click="main.notificationsUpdate(notification.id) && !main.hasNotifictions()">
+                    <a class="navbar-item " ng-click="main.notificationsUpdate(notification.id)">
                       <div class="level is-mobile">
                         <div class="level-left">
                           <div class="level-item">
@@ -117,9 +105,6 @@
             </a>
             <a class="navbar-item" ui-sref="register" ng-if="!main.isAuthenticated()">
               Register
-            </a>
-            <a class="navbar-item" ui-sref="register" ng-if="main.isAuthenticated()">
-
             </a>
             <a class="navbar-item" ui-sref="usersShow({id:main.currentUser.id})" ng-if="main.isAuthenticated()">
               My Tags

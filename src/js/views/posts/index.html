@@ -17,8 +17,8 @@
           <h3 class="postsTitle"><a ui-sref="postsShow({ id: post.id })">{{ post.title }}</a></h3>
           <br>
           <p class="topics_label" >Topics: </p>
-          <ul ng-repeat="topic in post.topics">
-            <li class="topicsIndex"><p class="topicName">{{ topic.name }}</p></li>
+          <ul ng-repeat="topic in post.topics" id="tags">
+            <li  class="topicsIndex"><p class="topicName">{{ topic.name }}</p></li>
           </ul>
           <br>
           <p>
