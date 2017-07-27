@@ -5,23 +5,26 @@
 
 $headingsFont: 'Muli', sans-serif;
 $textFont: 'Roboto', sans-serif;
-$purple: #462255;
+$purple: black;
 $blue: #313B72;
-$green: #FFA251;
-$lightGreen: #C3F3C0;
+$green: rgb(255, 162, 81);
+$greenFaded: rgba(255, 162, 81, 0.7);
+$lightGreen: rgb(188, 24, 108);
+$lightGreenFaded: rgba(188, 24, 108, 0.7);
 $red: crimson;
+
 
 
 .profileBox {
   border: 2px solid $green;
-  border-radius: 10px 70px;
+  border-radius: 0 70px;
   height: 650px;
 }
 main {
   h1 {
     font-family: $headingsFont;
     letter-spacing: 1.1px;
-    font-size: 40px;
+    font-size: 30px;
   }
   p {
     font-family: $textFont;
@@ -77,11 +80,17 @@ button {
 
 nav {
   &.navbar {
+    background-color: white;
     a {
       font-family: $headingsFont;
       letter-spacing: 1.1px;
       font-size: 20px;
+
     }
+      a.navbar-item {
+
+    }
+
   }
 
 }
@@ -119,6 +128,7 @@ h4 {
 }
 
 html {
+  background-color: #F6F5FC;
   &.home {
     h1 {
       color: black;
@@ -158,13 +168,14 @@ html {
 //post index styling
 div {
   &.postsIndexContent {
-    background-color: $lightGreen;
+    background-color: rgba(255,255,255,0.9);
     margin: 10px;
     overflow: hidden;
-    border: 1px solid lightgrey;
-    border-radius: 8px;
+    border: 1px solid white;
+    border-radius: 50px 0px;
     padding: 30px;
     p{
+      font-size: 15px;
       &.created_by {
         color: $green;
       }
@@ -172,16 +183,18 @@ div {
     a {
       color: $purple;
       font-weight: bold;
+      font-size: 25px;
       &:hover {
         color: $green;
       }
     }
     &:hover {
-      border: 2px solid $blue;
+      border: 1px solid $lightGreen;
     }
     &:nth-child(2n) {
+      color: $purple;
       float: right;
-      background-color: $green;
+      border-radius: 0px 50px;
       p {
         &.created_by {
           color: $lightGreen;
@@ -189,7 +202,7 @@ div {
       }
 
       &:hover {
-        border: 2px solid $blue;
+        border: 1px solid $green;
       }
       a {
         color: $purple;
@@ -241,7 +254,7 @@ div {
             padding: 0;
             display: inline;
             li {
-              display: inline;
+              display: inline-block;
             }
           }
         }

@@ -2,7 +2,6 @@
 
 <div class="filter column is-twelve">
   <div class="drop-down">
-    <p style="display: inline" >Filter Posts:</p>
     <select class="select" name="filter" ng-model="postsIndex.filter">
       <option ng-if="main.isAuthenticated()">My Tags</option>
       <option ng-repeat="topic in postsIndex.topics">{{ topic.name }}</option>
@@ -10,7 +9,7 @@
 
   </div>
 </div>
-<div ng-repeat="post in postsIndex.filtered" class="postsIndexContent column is-three-quarters animated fadeInUp">
+<div ng-repeat="post in postsIndex.filtered" class="postsIndexContent column is-11 animated fadeInUp">
   <article class="media">
     <div class="media-content">
       <div class="content">
