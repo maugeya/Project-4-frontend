@@ -25,6 +25,6 @@
     "angular-notification-icons": "^0.4.4"
   },
   "resolutions": {
-    "angular": "1.6.5"
+    "angular": ">=1.0.8"
   }
 }
