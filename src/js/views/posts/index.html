@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 
-<h1>posts index</h1>
-<div class="columns is-multiline">
-  <div class="field has-addons">
-    <div class="control is-expanded">
-      <div class="drop-down">
-        <select name="filter" ng-model="postsIndex.filter" ng-options="topic.name as topic.name for topic in postsIndex.topics">
-          <!-- <option selected value="my-tags">My Tags</option> -->
-        </select>
+<div class="filter column is-twelve">
+  <div class="drop-down">
+    <p style="display: inline" >Filter Posts:</p>
+    <select class="select" name="filter" ng-model="postsIndex.filter" ng-options="topic.name as topic.name for topic in postsIndex.topics">
+    </select>
+
+  </div>
+</div>
+<div ng-repeat="post in postsIndex.filtered" class="postsIndexContent column is-three-quarters animated fadeInUp">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+          <h3 class="postsTitle"><a ui-sref="postsShow({ id: post.id })">{{ post.title }}</a></h3>
+          <br>
+          <p class="topics_label" >Topics: </p>
+          <ul ng-repeat="topic in post.topics">
+            <li class="topicsIndex"><p class="topicName">{{ topic.name }}</p></li>
+          </ul>
+          <br>
+          <p>
+            {{post.shortDescription}}
+          </p>
+          <p class="created_by"><span class="created_by_label">Post created by: </span>{{post.user.username}} </p>
+
       </div>
+
     </div>
-  </div>
-  <div ng-repeat="post in postsIndex.filtered" class="column is-one-third animated fadeInUp">
-    <h3><a ui-sref="postsShow({ id: post.id })">{{ post.title }}</a></h3>
-    <img ng-src="{{ post.image_src }}">
-    <ul ng-repeat="topic in post.topics">
-      <li>{{ topic.name }}</li>
-    </ul>
-  </div>
+  </article>
 </div>

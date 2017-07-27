@@ -41,6 +41,7 @@ function PostsIndexCtrl(Post, Topic, User, $scope, filterFilter, $auth) {
   ], filterPosts);
 
 
+
 }
 
 
