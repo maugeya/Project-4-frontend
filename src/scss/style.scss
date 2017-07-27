@@ -16,9 +16,13 @@ $red: crimson;
 
 
 .profileBox {
-  border: 2px solid $green;
-  border-radius: 0 70px;
-  height: 650px;
+  background-color: rgba(255,255,255,0.9);
+  margin: 10px;
+  overflow: hidden;
+  border: 1px solid $green;
+  border-radius: 50px 0px;
+  padding: 30px;
+
 }
 main {
   h1 {
@@ -36,35 +40,35 @@ main {
 
 //button styling
 
-button {
-  width: 100px;
-  font-weight: bold;
-  &.deleteBtn {
-    background-color: $red;
-    border-radius: 5px;
-    color: black;
-    &:hover {
-      color: white;
-    }
-  }
-  &.editBtn {
-    background-color: lighten($blue, 20%);
-    border-radius: 5px;
-    color: black;
-    &:hover {
-      color: white;
-    }
-  }
-  &.submitBtn {
-    background-color: $green;
-    border-radius: 5px;
-    color: black;
-    &:hover {
-      color: white;
-    }
-  }
-
-}
+// button {
+//   width: 100px;
+//   font-weight: bold;
+//   &.deleteBtn {
+//     background-color: $red;
+//     border-radius: 5px;
+//     color: black;
+//     &:hover {
+//       color: white;
+//     }
+//   }
+//   &.editBtn {
+//     background-color: lighten($blue, 20%);
+//     border-radius: 5px;
+//     color: black;
+//     &:hover {
+//       color: white;
+//     }
+//   }
+//   &.submitBtn {
+//     background-color: $green;
+//     border-radius: 5px;
+//     color: black;
+//     &:hover {
+//       color: white;
+//     }
+//   }
+//
+// }
 
 #notify {
   left: -10px;
@@ -76,6 +80,8 @@ button {
 .overlay {
   height: 25px;
   width: 15px;
+  font-size: 13px;
+  background-color: $lightGreen;
 }
 
 nav {
@@ -135,15 +141,10 @@ html {
       font-size: 140px;
       font-family: $headingsFont;
       letter-spacing: 1.1px;
-      text-shadow: 10px 10px 8px #000000;
+      text-shadow: 10px 10px 10px #000000;
     }
     h4 {
       color: black;
-    }
-    &:root {
-      cursor: none;
-      --cursorX: 120vw;
-      --cursorY: 120vh;
     }
     &:root:before {
       content: '';
@@ -153,10 +154,10 @@ html {
       position: fixed;
       pointer-events: none;
       background: radial-gradient(
-      circle 20vmax at var(--cursorX) var(--cursorY),
+
       rgba(0,0,0,0) 0%,
-      rgba(0,0,0,.5) 80%,
-      rgba(0,0,0,.95) 100%
+      rgba(0,0,0,.5) 25%,
+      rgba(0,0,0,.95) 40%
       )
     }
 
@@ -416,10 +417,6 @@ div {
   }
 }
 
-.icon {
-  display: block;
-  float: right;
-}
 
 @media only screen and(max-width: 575px) {
   body{
