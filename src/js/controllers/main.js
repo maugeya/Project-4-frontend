@@ -19,7 +19,14 @@ function MainCtrl($rootScope, $state , $auth, $scope, User, $transitions, $state
   });
 
 
+  const protectedStates = ['postsNew', 'postsEdit'];
+
+
   $transitions.onSuccess({}, (transition) => {
+    if((!$auth.isAuthenticated() && protectedStates.includes(transition.$to().name))) {
+      vm.message = 'You must be logged in to access this page.';
+      return $state.go('login');
+    }
 
     if(vm.stateHasChanged) vm.message = null;
     if(!vm.stateHasChanged) vm.stateHasChanged = true;

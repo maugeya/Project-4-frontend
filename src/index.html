@@ -85,7 +85,7 @@
                   <notification-icon count="main.notify"><i class="fa fa-bell-o notify"></i></notification-icon>
                 </span>
               </div>
-              <div id="moreDropdown" class="navbar-dropdown">
+              <div id="moreDropdown" class="navbar-dropdown moreDropdown">
                 <ul>
                   <li ng-repeat="notification in main.activeNotifications">
                     <a class="navbar-item " ng-click="main.notificationsUpdate(notification.id) && !main.hasNotifictions()">
@@ -135,7 +135,6 @@
           <p>{{ main.message }}</p>
         </div>
         <main ui-view>
-
         </main>
       </div>
     </body>
