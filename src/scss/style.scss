@@ -65,13 +65,15 @@ nav {
   width: 100vw;
   &.navbar {
     background-color: white;
+    top: 0;
     a {
       font-family: $headingsFont;
       letter-spacing: 1.1px;
       font-size: 20px;
 
     }
-      a.navbar-item {
+
+    a.navbar-item {
 
     }
 
