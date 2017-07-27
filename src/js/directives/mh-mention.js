@@ -1,6 +1,6 @@
 angular
-  .module('spotlightApp')
-  .directive('mhMentions', mhMentions); //mike hayden memoirs
+.module('spotlightApp')
+.directive('mhMentions', mhMentions); //mike hayden memoirs
 
 mhMentions.$inject = ['filterFilter', '$rootScope']; //injecting filter filter
 function mhMentions(filterFilter, $rootScope) {
@@ -47,8 +47,8 @@ function mhMentions(filterFilter, $rootScope) {
       $scope.$watch('body', (val) => { //watch for changes in the text area (body)
         // find mentions in body text
         const usernames = (val.match(regex)||[]).map(match => match.substr(1));
-       // take the array of matches [@mike, @dave] and return them, or an empty array to the map function,
-       // then with those matches, take off the first letter at index 0, ei. the @ symbol
+        // take the array of matches [@mike, @dave] and return them, or an empty array to the map function,
+        // then with those matches, take off the first letter at index 0, ei. the @ symbol
         $scope.mentions = filterFilter($scope.users, (user => {
           return usernames.some(username => username === user.username);
         }));
@@ -58,7 +58,7 @@ function mhMentions(filterFilter, $rootScope) {
         let searchString = (val.substr(getIndexOfLastWord(val)).match(regex) || [])[0];
         searchString = searchString ? searchString.substr(1) : null;
         //take the @ symbol off
-    
+
         $scope.options = filterFilter($scope.users, { username: searchString });
         $scope.selectedIndex = 0;
 
@@ -92,6 +92,10 @@ function mhMentions(filterFilter, $rootScope) {
         $scope.body = $scope.body.substring(0, getIndexOfLastWord($scope.body)); //replace what the user began typing from the @ symbol
         $scope.body += `@${user.username} `; //with what we have passed in from the populated ol
         $element.find('textarea')[0].focus(); //refocus on the text area
+
+
+
+
       };
 
 

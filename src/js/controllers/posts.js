@@ -76,7 +76,21 @@ function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth) {
 
   vm.mentions = [];
   vm.users = User.query();
-  vm.post = Post.get($stateParams);
+  Post.get($stateParams)
+    .$promise
+    .then((post) => {
+      vm.post = post;
+      vm.post.comments = vm.post.comments.map(highlightUsername);
+    });
+
+  function highlightUsername(comment) {
+    const regex = /[^\s]*@\b[\.a-z0-9_-]+\b/gi;
+    const usernames = comment.body.match(regex);
+    if(usernames) usernames.forEach((username) => {
+      comment.body = comment.body.replace(username, `<span class="username">${username}</span>`);
+    });
+    return comment;
+  }
 
   function postsDelete() {
     vm.post
@@ -96,7 +110,8 @@ function PostsShowCtrl(Post, User, Comment, $stateParams, $state, $auth) {
     .$promise
     .then((comment) => {
       // console.log(comment);
-      vm.post.comments.push(comment);
+      const newComment = highlightUsername(comment);
+      vm.post.comments.push(newComment);
       // console.log('This is the comment id', vm.comment);
       vm.comment = {};
     });
