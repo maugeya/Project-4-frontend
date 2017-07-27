@@ -1,45 +1,73 @@
 <!DOCTYPE html>
-<div class="columns showPost" style="text-align:center">
-  <div class="column is-offset-one">
-    <div class="titleInfo">
-      <h1 class="showTitle">{{ postsShow.post.title }}</h1>
-      <a class="articleLink" ng-href="{{ postsShow.post.link_url }}" target="_blank">Article Link</a>
-      <img ng-src="{{ postsShow.post.image_src }}" alt="">
-    </div>
-    <div class="column is-eight">
-      <p>{{ postsShow.post.body }}</p>
+<!-- <div class="columns showPost" style="text-align:center">
+<div class="column is-offset-one">
+<div class="titleInfo">
+<h1 class="showTitle">{{ postsShow.post.title }}</h1>
+<a class="articleLink" ng-href="{{ postsShow.post.link_url }}" target="_blank">Article Link</a>
+<img ng-src="{{ postsShow.post.image_src }}" alt="">
+</div>
+<div class="column is-eight">
+<p>{{ postsShow.post.body }}</p>
 
-    </div>
-    <div class="column is-8">
+</div>
+<div class="column is-8">
 
-      <ul ng-repeat="topic in postsShow.post.topics">
-        <li><p>Post topics:</p><p  class="topics">{{ topic.name }}</p></li>
-      </ul>
+<ul ng-repeat="topic in postsShow.post.topics">
+<li><p>Post topics:</p><p  class="topics">{{ topic.name }}</p></li>
+</ul>
 
-
-      <button class="button editBtn" ui-sref="postsEdit({id: postsShow.post.id})" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Edit</button>
-
-      <button class="button deleteBtn" ng-click="main.openModal()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</button>
-    </div>
-
-    <a class="button is-info" ui-sref="postsEdit({id: postsShow.post.id})" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Edit</a>
-
-    <a class="button is-danger" ng-click="main.openModal()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</a>
-  </div>
 </div>
 
-<div class="column is-half is-offset-one-quarter">
+<a class="button is-info" ui-sref="postsEdit({id: postsShow.post.id})" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Edit</a>
+
+<a class="button is-danger" ng-click="main.openModal()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</a>
+</div>
+</div> -->
+
+<div class="beans">
+  <div class="tile is-ancesto">
+    <div class="tile is-8 is-vertical is-parent">
+      <div class="tile is-child box postsShowContent">
+        <h1 class="showTitle">{{ postsShow.post.title }}</h1>
+      </div>
+      <div class="tile is-child box postsShowContentOther">
+        <p>{{ postsShow.post.body }} <a class="articleLink" ng-href="{{ postsShow.post.link_url }}" target="_blank">Read More....</a></p>
+      </div>
+      <div class="tile is-child box postsShowContent">
+        <p>Tags:</p>
+        <ul ng-repeat="topic in postsShow.post.topics">
+          <li><p  class="topics">{{ topic.name }}</p></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tile is-vertical is-parent">
+      <div class="tile is-child box postsShowContentOther">
+        <img ng-src="{{ postsShow.post.image_src }}">
+      </div>
+      <div class="tile is-child box postsShowContent">
+        <p>Post created by:{{postsShow.post.user.username}} </p>
+        <a class="button is-info is-fullwidth" ui-sref="postsEdit({id: postsShow.post.id})" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Edit</a>
+
+        <a class="button is-danger is-fullwidth" ng-click="main.openModal()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="column is-8 is-offset-2">
   <form ng-submit="postsShow.addComment()" name="commentForm">
     <mh-mentions ng-model="postsShow.comment.body" users="postsShow.users" mentions="postsShow.mentions"></mh-mentions>
     <button class="button is-fullwidth is-dark submitBtn" name="submit">Comment</button>
   </form>
 
-<div ng-repeat="comment in postsShow.post.comments" class="column is-fullwidth box">
-  <h3>{{ comment.user.username }}</h3>
-  <p> {{ comment.body }}</p>
-  <!-- <button ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment(comment)">Delete</button> -->
-  <a class="button is-danger" ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment()">Delete</a>
-</div>
+  <div ng-repeat="comment in postsShow.post.comments" class="column is-fullwidth box">
+    <h3>{{ comment.user.username }}</h3>
+    <p> {{ comment.body }}</p>
+    <a class="button is-danger" ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment()">Delete</a>
+  </div>
 
 
 

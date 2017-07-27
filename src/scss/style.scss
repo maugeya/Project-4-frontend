@@ -215,6 +215,13 @@ div {
   }
 }
 
+.postsShowContent {
+  border: 1px solid $green;
+}
+.postsShowContentOther{
+  border: 1px solid $lightGreen;
+}
+
 .mh-mentions ol li.selected {
   background-color: #efefef;
 }
@@ -426,6 +433,15 @@ div {
     color: white;
   }
 }
+
+.beans {
+  margin-top: 30px;
+  margin-bottom: -150px;
+}
+.showTitle {
+  text-align: center;
+}
+
 
 
 @media only screen and(max-width: 575px) {
