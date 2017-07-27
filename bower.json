@@ -22,7 +22,8 @@
     "bulma": "^0.4.3",
     "checklist-model": "^0.11.0",
     "angular-messages": "^1.6.5",
-    "angular-notification-icons": "^0.4.4"
+    "angular-notification-icons": "^0.4.4",
+    "angular-sanitize": "^1.6.5"
   },
   "resolutions": {
     "angular": ">=1.0.8"

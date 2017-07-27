@@ -7,12 +7,16 @@ $headingsFont: 'Muli', sans-serif;
 $textFont: 'Roboto', sans-serif;
 $purple: #462255;
 $blue: #313B72;
-$green: #62A87C;
+$green: #FFA251;
 $lightGreen: #C3F3C0;
+$red: crimson;
 
 
-
-
+.profileBox {
+  border: 2px solid $green;
+  border-radius: 10px 70px;
+  height: 650px;
+}
 main {
   h1 {
     font-family: $headingsFont;
@@ -21,7 +25,42 @@ main {
   }
   p {
     font-family: $textFont;
+    font-size: 18px;
+    color: black;
+
   }
+}
+
+//button styling
+
+button {
+  width: 100px;
+  font-weight: bold;
+  &.deleteBtn {
+    background-color: $red;
+    border-radius: 5px;
+    color: black;
+    &:hover {
+      color: white;
+    }
+  }
+  &.editBtn {
+    background-color: lighten($blue, 20%);
+    border-radius: 5px;
+    color: black;
+    &:hover {
+      color: white;
+    }
+  }
+  &.submitBtn {
+    background-color: $green;
+    border-radius: 5px;
+    color: black;
+    &:hover {
+      color: white;
+    }
+  }
+
 }
 
 #notify {
@@ -124,8 +163,17 @@ div {
     border: 1px solid lightgrey;
     border-radius: 8px;
     padding: 30px;
+    p{
+      &.created_by {
+        color: $green;
+      }
+    }
     a {
+      color: $purple;
       font-weight: bold;
+      &:hover {
+        color: $green;
+      }
     }
     &:hover {
       border: 2px solid $blue;
@@ -133,6 +181,11 @@ div {
     &:nth-child(2n) {
       float: right;
       background-color: $green;
+      p {
+        &.created_by {
+          color: $lightGreen;
+        }
+      }
 
       &:hover {
         border: 2px solid $blue;
@@ -256,8 +309,104 @@ div {
 
 }
 
+//post show page
+
+div {
+  &.showPost {
+    margin-top: 30px;
+    div {
+      &.titleInfo {
+        a {
+          &.articleLink {
+            display: block;
+          }
+
+        }
+        img {
+          // width: auto;
+          // max-height: 300px;
+          width: auto; height: 300px;
+   background: #666;
+
+   border-top-left-radius: 15em 1em;
+   border-bottom-right-radius: 15em 1em;
+        }
+      }
+    }
+
+    p {
+      &.topics {
+        margin-left: 10px;
+        color: $red;
+      }
+    }
+    ul {
+      li {
+        display: inline;
+        p {
+          display: inline;
+        }
+      }
+    }
+    h1 {
+      color: $green;
+      font-size: 45px;
+    }
+    a {
+      color: $purple;
+      font-size: 25px;
+      &:hover {
+        color: lighten($purple, 40%);
+      }
+    }
+
+    div {
+      &.commentBox {
+        background-color: $lightGreen;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        h3 {
+          color: $purple;
+          font-size: 16px;
+          font-weight: bold;
+        }
+        .username {
+          color: dodgerblue;
+        }
+
+      }
+    }
+  }
+}
+
+.topicDiv{
+  width: 400px;
+  height: 200px;
+  top: 200px;
+
+}
+
+.topicLabel {
+  background-color: darkgrey;
+  display: inline-block;
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
 
 
+.topicInput {
+  display: none;
+  &:checked ~ label {
+    background-color: black;
+    color: white;
+  }
+}
+
+.icon {
+  display: block;
+  float: right;
+}
 
 @media only screen and(max-width: 575px) {
   body{

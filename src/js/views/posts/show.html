@@ -1,59 +1,75 @@
 <!DOCTYPE html>
-<div class="titleInfo">
-  <h1>{{ postsShow.post.title }}</h1>
-  <a ng-href="{{ postsShow.post.link_url }}" target="_blank">Article Link</a>
-</div>
-<div class="columns is-multiline">
-  <div class="column is-half">
-    <p>{{ postsShow.post.body }}</p>
-  </div>
-  <div class="column-is-half">
-    <img ng-src="{{ postsShow.post.image_src }}" alt="">
-    <ul ng-repeat="topic in postsShow.post.topics">
-      <li>{{ topic.name }}</li>
-    </ul>
+<div class="columns showPost" style="text-align:center">
+  <div class="column is-offset-one">
+    <div class="titleInfo">
+      <h1 class="showTitle">{{ postsShow.post.title }}</h1>
+      <a class="articleLink" ng-href="{{ postsShow.post.link_url }}" target="_blank">Article Link</a>
+      <img ng-src="{{ postsShow.post.image_src }}" alt="">
+    </div>
+    <div class="column is-eight">
+      <p>{{ postsShow.post.body }}</p>
+
+    </div>
+    <div class="column is-eight">
+
+      <ul ng-repeat="topic in postsShow.post.topics">
+        <li><p>Post topics:</p><p  class="topics">{{ topic.name }}</p></li>
+      </ul>
 
 
-    <button ui-sref="postsEdit({id: postsShow.post.id})" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Edit</button>
+      <button class="button editBtn" ui-sref="postsEdit({id: postsShow.post.id})" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Edit</button>
 
-    <button ng-click="main.openModal()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</button>
+      <button class="button deleteBtn" ng-click="main.openModal()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</button>
+    </div>
+
+    <a class="button is-info" ui-sref="postsEdit({id: postsShow.post.id})" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Edit</a>
+
+    <a class="button is-danger" ng-click="main.openModal()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</a>
   </div>
 </div>
 <div ng-repeat="comment in postsShow.post.comments" class="column is-half">
   <h3>{{ comment.user.username }}</h3>
   <p> {{ comment.body }}</p>
   <!-- <button ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment(comment)">Delete</button> -->
-  <button ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment()">Delete</button>
+  <a class="button is-danger" ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment()">Delete</a>
 </div>
 
 
+    <div class="column is-half is-offset-one-quarter">
+      <form ng-submit="postsShow.addComment()" name="commentForm">
+        <mh-mentions ng-model="postsShow.comment.body" users="postsShow.users" mentions="postsShow.mentions"></mh-mentions>
+        <button class="button submitBtn" name="submit">Comment</button>
+      </form>
 
- <div class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-content">
-    <div class="popUp">
-      <h2 class="warningLabel">Are you sure you want to delete this post?</h2>
-      <a class="button is-info" ng-click="main.closeModal()">Go Back</a>
-      <a class="button is-danger" ng-click="postsShow.delete()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</a>
+      <div ng-repeat="mention in postsShow.mentions">
+        <h1>{{mention.id}}</h1>
+      </div>
 
     </div>
-    <!-- Any other Bulma elements you want -->
+    <div ng-repeat="comment in postsShow.post.comments track by $index" class=" commentBox column is-half is-offset-one-quarter">
+      <h3 class="commentUserName">{{ comment.user.username }}</h3>
+      <!-- <p class="commentContent"> {{ comment.body }}</p> -->
+      <p class="commentContent" ng-bind-html="comment.body"></p>
+      <button class="button deleteBtn" ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment(comment)">Delete</button>
+    </div>
+
+
+
+    <div class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="popUp">
+          <h2 class="warningLabel">Are you sure you want to delete this post?</h2>
+          <a class="button is-info" ng-click="main.closeModal()">Go Back</a>
+          <a class="button is-danger" ng-click="postsShow.delete()" ng-if="main.isAuthenticated() && main.currentUser.id === postsShow.post.user.id">Delete</a>
+
+        </div>
+      </div>
+      <button class="modal-close is-large" ng-click="postsShow.closeModal()"></button>
+    </div>
+
+
+
+
   </div>
-  <button class="modal-close is-large" ng-click="postsShow.closeModal()"></button>
-</div>
-
-
-
-<div>
-  <form ng-submit="postsShow.addComment()" name="commentForm">
-    <mh-mentions ng-model="postsShow.comment.body" users="postsShow.users" mentions="postsShow.mentions"></mh-mentions>
-    <button name="submit">Comment</button>
-  </form>
-
-  <div ng-repeat="mention in postsShow.mentions">
-    <h1>{{mention.id}}</h1>
-
-  </div>
-  <!-- {{ postsShow.mentions}} -->
-
 </div>
