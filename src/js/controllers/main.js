@@ -42,7 +42,17 @@ function MainCtrl($rootScope, $state , $auth, $scope, User, $transitions, $state
       }
       vm.activeNotifications = activeNotifications;
       vm.notify = activeNotifications.length;
+
+      function hasNotifictions(){
+        if(activeNotifications.length === 0){
+          return true;
+        }
+      }
+      vm.hasNotifictions = hasNotifictions;
     });
+
+
+
   });
 
 

@@ -17,7 +17,7 @@ main {
   }
 }
 
-#notify {
+.notify {
   left: -10px;
   color: black;
   font-weight: bolder;
@@ -37,6 +37,11 @@ nav {
       font-size: 20px;
     }
   }
+
+}
+.mobiletitle {
+  width: 100%;
+  margin-left: 50px;
 }
 
 
