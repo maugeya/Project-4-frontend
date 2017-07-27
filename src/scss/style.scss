@@ -5,23 +5,30 @@
 
 $headingsFont: 'Muli', sans-serif;
 $textFont: 'Roboto', sans-serif;
-$purple: #462255;
+$purple: black;
 $blue: #313B72;
-$green: #FFA251;
-$lightGreen: #C3F3C0;
+$green: rgb(255, 162, 81);
+$greenFaded: rgba(255, 162, 81, 0.7);
+$lightGreen: rgb(188, 24, 108);
+$lightGreenFaded: rgba(188, 24, 108, 0.7);
 $red: crimson;
 
 
+
 .profileBox {
-  border: 2px solid $green;
-  border-radius: 10px 70px;
-  height: 650px;
+  background-color: rgba(255,255,255,0.9);
+  margin: 10px;
+  overflow: hidden;
+  border: 1px solid $green;
+  border-radius: 50px 0px;
+  padding: 30px;
+
 }
 main {
   h1 {
     font-family: $headingsFont;
     letter-spacing: 1.1px;
-    font-size: 40px;
+    font-size: 30px;
   }
   p {
     font-family: $textFont;
@@ -33,35 +40,35 @@ main {
 
 //button styling
 
-button {
-  width: 100px;
-  font-weight: bold;
-  &.deleteBtn {
-    background-color: $red;
-    border-radius: 5px;
-    color: black;
-    &:hover {
-      color: white;
-    }
-  }
-  &.editBtn {
-    background-color: lighten($blue, 20%);
-    border-radius: 5px;
-    color: black;
-    &:hover {
-      color: white;
-    }
-  }
-  &.submitBtn {
-    background-color: $green;
-    border-radius: 5px;
-    color: black;
-    &:hover {
-      color: white;
-    }
-  }
-
-}
+// button {
+//   width: 100px;
+//   font-weight: bold;
+//   &.deleteBtn {
+//     background-color: $red;
+//     border-radius: 5px;
+//     color: black;
+//     &:hover {
+//       color: white;
+//     }
+//   }
+//   &.editBtn {
+//     background-color: lighten($blue, 20%);
+//     border-radius: 5px;
+//     color: black;
+//     &:hover {
+//       color: white;
+//     }
+//   }
+//   &.submitBtn {
+//     background-color: $green;
+//     border-radius: 5px;
+//     color: black;
+//     &:hover {
+//       color: white;
+//     }
+//   }
+//
+// }
 
 #notify {
   left: -10px;
@@ -73,15 +80,23 @@ button {
 .overlay {
   height: 25px;
   width: 15px;
+  font-size: 13px;
+  background-color: $lightGreen;
 }
 
 nav {
   &.navbar {
+    background-color: white;
     a {
       font-family: $headingsFont;
       letter-spacing: 1.1px;
       font-size: 20px;
+
     }
+      a.navbar-item {
+
+    }
+
   }
 
 }
@@ -118,6 +133,7 @@ h4 {
 }
 
 html {
+  background-color: #F6F5FC;
   &.home {
     h1 {
       color: black;
@@ -125,15 +141,10 @@ html {
       font-size: 140px;
       font-family: $headingsFont;
       letter-spacing: 1.1px;
-      text-shadow: 10px 10px 8px #000000;
+      text-shadow: 10px 10px 10px #000000;
     }
     h4 {
       color: black;
-    }
-    &:root {
-      cursor: none;
-      --cursorX: 120vw;
-      --cursorY: 120vh;
     }
     &:root:before {
       content: '';
@@ -143,10 +154,10 @@ html {
       position: fixed;
       pointer-events: none;
       background: radial-gradient(
-      circle 20vmax at var(--cursorX) var(--cursorY),
+
       rgba(0,0,0,0) 0%,
-      rgba(0,0,0,.5) 80%,
-      rgba(0,0,0,.95) 100%
+      rgba(0,0,0,.5) 25%,
+      rgba(0,0,0,.95) 40%
       )
     }
 
@@ -157,13 +168,14 @@ html {
 //post index styling
 div {
   &.postsIndexContent {
-    background-color: $lightGreen;
+    background-color: rgba(255,255,255,0.9);
     margin: 10px;
     overflow: hidden;
-    border: 1px solid lightgrey;
-    border-radius: 8px;
+    border: 1px solid white;
+    border-radius: 50px 0px;
     padding: 30px;
     p{
+      font-size: 15px;
       &.created_by {
         color: $green;
       }
@@ -171,16 +183,18 @@ div {
     a {
       color: $purple;
       font-weight: bold;
+      font-size: 25px;
       &:hover {
         color: $green;
       }
     }
     &:hover {
-      border: 2px solid $blue;
+      border: 1px solid $lightGreen;
     }
     &:nth-child(2n) {
+      color: $purple;
       float: right;
-      background-color: $green;
+      border-radius: 0px 50px;
       p {
         &.created_by {
           color: $lightGreen;
@@ -188,7 +202,7 @@ div {
       }
 
       &:hover {
-        border: 2px solid $blue;
+        border: 1px solid $green;
       }
       a {
         color: $purple;
@@ -241,7 +255,7 @@ div {
             padding: 0;
             display: inline;
             li {
-              display: inline;
+              display: inline-block;
             }
           }
         }
@@ -413,10 +427,6 @@ div {
   }
 }
 
-.icon {
-  display: block;
-  float: right;
-}
 
 @media only screen and(max-width: 575px) {
   body{
