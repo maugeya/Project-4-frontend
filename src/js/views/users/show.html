@@ -5,3 +5,20 @@
 <ul>
   <li ng-repeat="topics in usersShow.user.topics">{{ topics.name }}</li>
 </ul>
+
+
+<form ng-submit="usersShow.update()">
+  <div class="field">
+    <label ng-repeat="topic in usersShow.topics">
+      <input type="checkbox" name="topics" checklist-model="usersShow.user.topic_ids" checklist-value="topic.id" > {{ topic.name }}
+    </label>
+  </div>
+  <div class="field">
+    <p class="control">
+      <button type="submit" class="button is-dark is-fullwidth">Update Tags</button>
+    </p>
+  </div>
+</form>
+{{ usersShow.user.topics}}
+
+<button ng-click="usersShow.usersDelete()">Delete Account </button>
