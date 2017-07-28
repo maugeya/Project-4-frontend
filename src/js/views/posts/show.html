@@ -41,6 +41,7 @@
   <div ng-repeat="comment in postsShow.post.comments" class="column is-fullwidth box">
     <h3>{{ comment.user.username }}</h3>
     <p class="commentContent" ng-bind-html="comment.body"> {{ comment.body }}</p>
+    <p><small>{{comment.created_at | date}}</small></p>
     <a class="button is-danger" ng-if="main.isAuthenticated() && postsShow.currentUser.id === comment.user.id" ng-click="postsShow.deleteComment(comment)">Delete</a>
   </div>
 
