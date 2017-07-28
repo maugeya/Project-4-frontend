@@ -114,11 +114,31 @@ h4 {
 
 html {
   background-color: #F6F5FC;
+
   &.home {
     background-color: black;
+
+    .spotDiv{
+      margin:  0 auto;
+      width: 790px;
+      height: 100vh;
+      position: relative;
+      background: radial-gradient(
+      rgba(255,255,255,0.8) 10%,
+      rgba(0,0,0,.5) 60%,
+      rgba(0,0,0,.95) 40%
+
+      )
+    }
     h1 {
       color: black;
+      position: absolute;
+      left: 50%;
+      top: 25%;
+      width: 100%;
+      transform: translate(-50%, -50%);
       font-weight: bold;
+      z-index: 10;
       font-size: 140px;
       font-family: $headingsFont;
       letter-spacing: 1.1px;
@@ -126,22 +146,13 @@ html {
     }
     h4 {
       color: black;
-    }
-    &:root:before {
-      content: '';
       position: absolute;
-      left: 23%;
-      width: 790px;
-      height: 790px;
-      pointer-events: none;
-      background: radial-gradient(
-
-      rgba(255,255,255,0.8) 10%,
-      rgba(0,0,0,.5) 60%,
-      rgba(0,0,0,.95) 40%
-      )
+      left: 50%;
+      top: 65%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
     }
-
   }
 }
 
@@ -427,11 +438,16 @@ div {
 
 @media only screen and(max-width: 575px) {
     body{
-      &.home{
-
+      &.home {
+        .spotDiv{
+          background-color: black;
+          width: 400px;
+          height: 400px;
+          background: black;
+        }
         h1 {
-          font-size: 40px;
-          margin-top: 200px;
+          font-size: 60px;
+          // margin-top: 200px;
           color: white;
         }
         h4 {
@@ -439,10 +455,6 @@ div {
         }
     }
   }
-  &:root:before {
-    display: none;
-  }
-
 }
 
 //users show page
