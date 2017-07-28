@@ -53,11 +53,21 @@
       </div>
     </div>
 
-    <div class="field">
+    <!-- <div class="field">
       <label for="topics">Topics</label>
       <label ng-repeat="topic in register.topics">
         <input type="checkbox" name="topics" checklist-model="register.user.topic_ids" checklist-value="topic.id" > {{ topic.name }}
       </label>
+    </div> -->
+
+    <div class="field topicDiv">
+      <span ng-repeat="topic in register.topics">
+        <input id="{{ topic.name }}" class="topicInput" type="checkbox" name="topics" checklist-model="register.user.topic_ids" checklist-value="topic.id" >
+        <label class="topicLabel" for="{{ topic.name }}">
+           {{ topic.name }}
+        </label>
+      </span>
+
     </div>
 
     <div class="field">
