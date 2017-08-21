@@ -120,8 +120,8 @@ html {
 
     .spotDiv{
       margin:  0 auto;
-      width: 790px;
-      height: 100vh;
+      width: 810px;
+      height: 110vh;
       position: relative;
       background: radial-gradient(
       rgba(255,255,255,0.8) 10%,
@@ -139,7 +139,7 @@ html {
       transform: translate(-50%, -50%);
       font-weight: bold;
       z-index: 10;
-      font-size: 140px;
+      font-size: 110px;
       font-family: $headingsFont;
       letter-spacing: 1.1px;
       text-shadow: 10px 10px 10px #000000;
